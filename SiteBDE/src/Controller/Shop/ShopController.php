@@ -2,8 +2,8 @@
 
 namespace App\Controller\Shop;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ShopController extends Controller
 {
