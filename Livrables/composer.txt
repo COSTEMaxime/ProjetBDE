@@ -1,0 +1,9 @@
+server --dev
+twig
+profiler
+maker
+form
+encore
+doctrine
+annotations
+debug
