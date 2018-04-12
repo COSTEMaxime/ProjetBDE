@@ -2,24 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64e0df9-ed58-4c8f-b002-d617ca6b0c85" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Events/event_add.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Events/events.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Shop/article.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Shop/cart.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Shop/gestion.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Shop/shop.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Suggestions/add.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Suggestions/idea.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Suggestions/ideas.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/Suggestions/promote.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/SiteBDE/templates/UserGestion/register.html.twig" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/ProjetBDE.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue" afterPath="$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/Events/EventController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/Events/EventController.php" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/Shop/ShopController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/Shop/ShopController.php" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/Suggestions/SuggestionsController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/Suggestions/SuggestionsController.php" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/UserGestion/RegisterController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/UserGestion/RegisterController.php" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/App.vue" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/components/Footer.vue" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/components/Hello.vue" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/assets/js/main.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/BebasNeue-webfont.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/BebasNeue-webfont.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/BebasNeue-webfont.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/BebasNeue-webfont.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/Dharma Type Font License.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/StayWildy/StayWildy.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/fontomas-webfont.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/fontomas-webfont.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/fontomas-webfont.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/fontomas-webfont.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/franchise-bold-webfont.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/franchise-bold-webfont.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/franchise-bold-webfont.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/fonts/franchise-bold-webfont.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/public/CSS/style.css" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,26 +41,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ideas.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/ideas.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="idea.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/idea.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/add.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,21 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="36" column="94" lean-forward="true" selection-start-line="36" selection-start-column="94" selection-end-line="36" selection-end-column="94" />
+            <state relative-caret-position="180">
+              <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -155,12 +133,15 @@
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/SiteBDE/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
     <include_path>
@@ -256,12 +237,12 @@
       <path value="$PROJECT_DIR$/SiteBDE/vendor/symfony/property-access" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -364,6 +345,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SiteBDE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -403,15 +387,15 @@
       <option name="presentableId" value="Default" />
       <updated>1523480045630</updated>
       <workItem from="1523480049359" duration="809000" />
-      <workItem from="1523515819350" duration="1639000" />
+      <workItem from="1523515819350" duration="1884000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2448000" />
+    <option name="totallyTimeSpent" value="2693000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1977612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -613,14 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/Events/EventController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -647,8 +623,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
+        <state relative-caret-position="113">
           <caret line="36" column="94" lean-forward="true" selection-start-line="36" selection-start-column="94" selection-end-line="36" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/assets/js/components/Hello.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/assets/js/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding />
         </state>
       </provider>
