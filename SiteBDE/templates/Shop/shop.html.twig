@@ -1,38 +1,218 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    {% block stylesheets %}
-        <link rel="stylesheet" href="../CSS/style.css" />
-        <!-- Thème index -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-        <!-- Thème police -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    {% endblock %}
-    <!--Bootstrap-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-    <title>{% block title %}Site BDE{% endblock %}</title>
-
-</head>
-<body>
+{% extends "base.html.twig" %}
 {% block body %}
-    <div id="app">Une erreur est intervenue =( </div> <!-- Fais référence à App.vue-->
+
+
+    <div class="container">
+        <div class="col-xs-12">
+            <div class="carousel slide" id="myCarousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /Slide1 -->
+                    <div class="item">
+                        <ul class="thumbnails">
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /Slide2 -->
+                    <div class="item">
+                        <ul class="thumbnails">
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>Tître</h4>
+                                        <p2>Description produit </p2>
+                                        <br/>
+                                        <p2>Prix</p2>
+                                        <br/>
+                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div><!-- /Slide3 -->
+                </div>
+
+
+                <nav>
+                    <ul class="control-box pager">
+                        <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                        <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+                    </ul>
+                </nav>
+                <!-- /.control-box -->
+
+            </div><!-- /#myCarousel -->
+
+        </div><!-- /.col-xs-12 -->
+
+    </div><!-- /.container -->
+
 {% endblock %}
-
-{% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="{{ asset('build/app.js') }}"></script>
-    <script src="../JS/bs-animation.js"></script> <!-- place youre js file here -->
-    <script src="../JS/navbar.js"></script> <!-- place youre js file here -->
-{% endblock %}
-
-
-</body>
-
-</html>
