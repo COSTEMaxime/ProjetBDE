@@ -12,7 +12,7 @@ class EventController extends Controller
      */
     public function eventsHomepage()
     {
-
+        return $this->render('/Events/events.html.twig');
     }
 
     /**
@@ -20,7 +20,7 @@ class EventController extends Controller
      */
     public function event($slug)
     {
-
+        return $this->render('/Events/event.html.twig');
     }
 
     /**
@@ -28,6 +28,6 @@ class EventController extends Controller
      */
     public function add()
     {
-
+        return $this->render('/Events/event_add.html.twig');
     }
 }

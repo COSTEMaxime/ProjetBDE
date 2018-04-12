@@ -12,7 +12,7 @@ class SuggestionsController extends Controller
      */
     public function suggestionsHomepage()
     {
-
+        return $this->render('/Suggestions/ideas.html.twig');
     }
 
     /**
@@ -20,7 +20,7 @@ class SuggestionsController extends Controller
      */
     public function suggestion($slug)
     {
-
+        return $this->render('/Suggestions/idea.html.twig');
     }
 
     /**
@@ -28,7 +28,7 @@ class SuggestionsController extends Controller
      */
     public function add()
     {
-
+        return $this->render('/Suggestions/add.html.twig');
     }
 
     /**
@@ -36,7 +36,7 @@ class SuggestionsController extends Controller
      */
     public function promote($slug)
     {
-
+        return $this->render('/Suggestions/promote.html.twig');
     }
 
 }

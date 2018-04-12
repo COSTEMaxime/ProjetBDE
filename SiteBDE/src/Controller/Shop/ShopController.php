@@ -12,7 +12,7 @@ class ShopController extends Controller
      */
     public function shopHomepage()
     {
-
+        return $this->render('/Shop/shop.html.twig');
     }
 
     /**
@@ -20,7 +20,7 @@ class ShopController extends Controller
      */
     public function article($slug)
     {
-
+        return $this->render('/Shop/article.html.twig');
     }
 
     /**
@@ -28,7 +28,7 @@ class ShopController extends Controller
      */
     public function cart()
     {
-
+        return $this->render('/Shop/cart.html.twig');
     }
 
     /**
@@ -36,6 +36,6 @@ class ShopController extends Controller
      */
     public function manage()
     {
-
+        return $this->render('/Shop/gestion.html.twig');
     }
 }

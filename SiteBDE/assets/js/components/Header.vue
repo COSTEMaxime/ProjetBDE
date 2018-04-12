@@ -18,16 +18,16 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#">Accueil</a>
+                            <a href="/" >Accueil</a>
                         </li>
                         <li class="">
-                            <a href="#">Boîte à idée</a>
+                            <a href="/ideas">Boîte à idée</a>
                         </li>
                         <li class="">
-                            <a href="#">Evènements</a>
+                            <a href="/events">Evènements</a>
                         </li>
                         <li class="">
-                            <a href="#">Boutique</a>
+                            <a href="/shop">Boutique</a>
                         </li>
                     </ul>
                     <!-- Login -->
@@ -63,7 +63,7 @@
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            <a href="#"><b>Pas encore inscrit ?</b></a>
+                                            <a href="/register"><b>Pas encore inscrit ?</b></a>
                                         </div>
                                 </li>
                             </ul>

@@ -12,6 +12,6 @@ class RegisterController extends Controller
      */
     public function register()
     {
-
+        return $this->render('/UserGestion/register.html.twig');
     }
 }
