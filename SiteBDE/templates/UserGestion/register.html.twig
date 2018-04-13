@@ -1,38 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    {% block stylesheets %}
-        <link rel="stylesheet" href="../CSS/style.css" />
-        <!-- Thème index -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-        <!-- Thème police -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    {% endblock %}
-    <!--Bootstrap-->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-    <title>{% block title %}Site BDE{% endblock %}</title>
-
-</head>
-<body>
+{% extends "base.html.twig" %}
 {% block body %}
-    <div id="app">Une erreur est intervenue =( </div> <!-- Fais référence à App.vue-->
+    <p>Formulaire d'inscription</p>
+    <div id="login-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                    <div class="col-xs-15">
+                        <div class="well">
+                            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                                <div class="form-group">
+                                    <label for="username" class="control-label">Prénom</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="Daniel">
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="control-label">Nom</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="Turrain">
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="username" class="control-label">Email</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="prenom.nom@viacesi.fr">
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="control-label">Mot de passe</label>
+                                    <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="control-label">Confirmez Mot de passe</label>
+                                    <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+                                    <span class="help-block"></span>
+                                </div>
+                                <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+                                <button type="submit" class="btn btn-success btn-block">S'enregistrer</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
-{% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="{{ asset('build/app.js') }}"></script>
-    <script src="../JS/bs-animation.js"></script> <!-- place youre js file here -->
-    <script src="../JS/navbar.js"></script> <!-- place youre js file here -->
-{% endblock %}
-
-
-</body>
-
-</html>
