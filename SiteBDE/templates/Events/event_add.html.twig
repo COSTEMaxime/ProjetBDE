@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
+
 {% block body %}
     <p>Ajouter un évènement</p>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/events/add'">Créer un évènement</button>
     <div id="login-overlay" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -10,33 +10,42 @@
                         <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
                             <div class="form-group">
                                 <label for="username" class="control-label">Tître</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="Compétition CS Source">
-                                <span class="help-block"></span>
+                                <input type="text" class="form-control" id="username" name="titre" value="" required="" placeholder="Compétition CS Source">
                             </div>
                             <div class="form-group">
-                                <label for="username" class="control-label">Description</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="Turrain">
-                                <span class="help-block"></span>
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+                            </div>
+                            <div class="container">
+                                <img id="blah" src="http://placehold.it/180" alt="your image" />
+                                <div class="row">
+                                    <input type='file' onchange="readURL(this);" name = "img"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <input id="datepicker" width="270" name = "date" placeholder="Date"/>
+                                <script>
+                                    $('#datepicker').datepicker({
+                                        uiLibrary: 'bootstrap'
+                                    });
+                                </script>
                             </div>
                             <div class="form-group">
-                                <label for="username" class="control-label">Image</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="prenom.nom@viacesi.fr">
-                                <span class="help-block"></span>
+                                <label for="sel1">Récurence</label>
+                                <select class="form-control" id="sel1" name = "recurence">
+                                    <option>Aucune</option>
+                                    <option>Journalière</option>
+                                    <option>Hebdomadaire</option>
+                                    <option>Annuelle</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label for="username" class="control-label">Date</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="prenom.nom@viacesi.fr">
-                                <span class="help-block"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="username" class="control-label">Récurence ?</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="prenom.nom@viacesi.fr">
-                                <span class="help-block"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="username" class="control-label">Prix</label>
-                                <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="prenom.nom@viacesi.fr">
-                                <span class="help-block"></span>
+                                <label for="pricelab" class = "control-label">Prix</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="prix" id = "pricelab"/>
+                                        <span class="input-group-addon">€</span>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-success btn-block">Proposer l'évènement</button>
                         </form>

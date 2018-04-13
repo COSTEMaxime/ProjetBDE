@@ -1,4 +1,22 @@
 {% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="active">
+            <a href="/shop">Boutique</a>
+        </li>
+    </ul>
+    {% endblock %}
 {% block body %}
     <p>Article</p>
 

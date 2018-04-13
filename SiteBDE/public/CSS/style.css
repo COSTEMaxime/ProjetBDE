@@ -1,13 +1,20 @@
 /*Header*/
 body {
-    height:100vh;
+    height:auto;
     /*https://img1.picload.org/image/ddolpcwa/woman-2486528_1920.jpg*/
     background-image:url('http://www.intrawallpaper.com/static/images/City_Wallpaper_1080p_12.jpg');
     background-size:cover;
-    background-position:center center;
+    background-position:center;
     background-repeat:no-repeat;
 }
-
+html{
+    overflow: auto;
+}
+.top-corner{
+    position: absolute;
+    top: 80px;
+    right: 0;
+}
 
 @media (max-width:767px) {
     body {
@@ -65,8 +72,15 @@ body { margin-top:30px; }
 
 .footer-wrap {
     background: url(http://hassandesigns.top/html/classified/images/footer-bg.jpg) no-repeat top;
-    padding-top: 30px;
+    height: 60px;
     background-size: cover;
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 40px;
+
 }
 
 .footer-wrap h3 {
@@ -290,7 +304,8 @@ li { list-style-type:none;} /*Retire les points*/
     margin: 20px 1%;
     min-width: 230px;
     max-width: 315px;
-
+    display: inline-block;
+    /*float : left;*/
     width: 50%;
     background: #ffffff;
     text-align: center;
@@ -374,4 +389,210 @@ li { list-style-type:none;} /*Retire les points*/
 .snip1423:hover i,
 .snip1423.hover i {
     background-color: #2980b9;
+}
+
+
+
+/* Evènement [Singulier] */
+
+.coupon {
+    border: 3px dashed #bcbcbc;
+    border-radius: 10px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+    "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.coupon #head {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    min-height: 56px;
+}
+
+.coupon #footer {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#title .visible-xs {
+    font-size: 12px;
+}
+
+.coupon #title img {
+    font-size: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 500px) {
+    .coupon #title img {
+        height: 15px;
+    }
+}
+
+.coupon #title span {
+    float: right;
+    margin-top: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.coupon-img {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.items {
+    margin: 15px 0;
+}
+
+.usd, .cents {
+    font-size: 20px;
+}
+
+.number {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+sup {
+    top: -15px;
+}
+
+#business-info ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+#business-info ul li {
+    display: inline;
+    text-align: center;
+}
+
+#business-info ul li span {
+    text-decoration: none;
+    padding: .2em 1em;
+}
+
+#business-info ul li span i {
+    padding-right: 5px;
+}
+
+.coupon-code {
+    color: #333333;
+    font-size: 11px;
+}
+
+.exp {
+    color: #78a5f3;
+}
+
+.print {
+    font-size: 14px;
+    float: right;
+}
+
+/* Réagir */
+
+
+input, textarea {
+    outline: none;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: "PT Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+    font-size: 1rem;
+    color: #555f77;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #ced2db;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #ced2db;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #ced2db;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #ced2db;
+}
+
+p {
+    line-height: 1.3125rem;
+}
+
+.comments {
+    margin: 2.5rem auto 0;
+    max-width: 60.75rem;
+    padding: 0 1.25rem;
+}
+
+.comment-wrap {
+    margin-bottom: 1.25rem;
+    display: table;
+    width: 100%;
+    min-height: 5.3125rem;
+}
+
+.photo {
+    padding-top: 0.625rem;
+    display: table-cell;
+    width: 3.5rem;
+}
+.photo .avatar {
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    background-size: contain;
+}
+
+.comment-block {
+    padding: 1rem;
+    background-color: #fff;
+    display: table-cell;
+    vertical-align: top;
+    border-radius: 0.1875rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+.comment-block textarea {
+    width: 100%;
+    resize: none;
+}
+
+.comment-text {
+    margin-bottom: 1.25rem;
+}
+
+.bottom-comment {
+    color: #acb4c2;
+    font-size: 0.875rem;
+}
+
+.comment-date {
+    float: left;
+}
+
+.comment-actions {
+    float: right;
+}
+.comment-actions li {
+    display: inline;
+    margin: -2px;
+    cursor: pointer;
+}
+.comment-actions li.complain {
+    padding-right: 0.75rem;
+    border-right: 1px solid #e1e5eb;
+}
+.comment-actions li.reply {
+    padding-left: 0.75rem;
+    padding-right: 0.125rem;
+}
+.comment-actions li:hover {
+    color: #0095ff;
 }

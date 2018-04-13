@@ -1,15 +1,170 @@
 {% extends "base.html.twig" %}
+{% block navbar %}
+    <!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="active">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="">
+            <a href="/shop">Boutique</a>
+        </li>
+    </ul>
+    {% endblock %}
 {% block body %}
-    <p>Evènements [Nom évènement]</p>
 
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="col-xs-40">
-                <div class="well">
+    <div class="row" id="lightblue">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-info coupon">
+                <div class="panel-heading" id="head">
+                    <div class="panel-title" id="title">
+                        <i class="fa fa-bullhorn fa-2x"></i>
+                        <span class="hidden-xs">LAN De Counter Strike</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" class="coupon-img img-rounded">
+                    <div class="col-md-9">
+                        <ul class="items">
+                            <li><b>Description de l'évènement :</b></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="offer text-info">
+                            <span class="number">39</span>
+                            <span class="cents"><sup>95</sup></span>
+                            <span class="usd"><sup>€</sup></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p3>Orientis vero limes in longum protentus et rectum ab Euphratis fluminis ripis ad usque supercilia porrigitur Nili,
+                            laeva Saracenis conterminans gentibus, dextra pelagi fragoribus patens, quam plagam Nicator Seleucus occupatam auxit magnum in modum,
+                            cum post Alexandri Macedonis obitum successorio iure teneret regna Persidis, efficaciae inpetrabilis rex, ut indicat cognomentum.</p3>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="coupon-code">
+                        N'attendez plus :
+                        <span class="print">
+                                    <li class="dropdown">
+            <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Poster une photo<b class="caret"></b></a>
+            <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                <li>
+
+                    <div class="col-md-20">
+                        <b>Ajoutez une photo : </b>
+                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8"
+                              id="login-nav">
+                            <div class="form-group">
+                                <div class="row">
+                                    <input type='file' onchange="readURL(this);" name = "img"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                 <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Ajouter Photo</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </li>
+                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-print"></i> Liste Inscrits</a>
+
+                    </span>
+                    </div>
+                    <div class="exp">
+                        <a href="#"> Je m'inscris </a>
+                    </div>
 
                 </div>
+
             </div>
         </div>
     </div>
 
+
+        <div class="row" id="yellow">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-warning coupon">
+                    <div class="panel-heading" id="head">
+                        <div class="panel-title" id="title">
+                            <i class="fa fa-comments-o fa-2x"></i>
+                        <span class="hidden-xs">John - McGuard - 17/05/2018</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <img src="https://i1.wp.com/www.alwaysforkeyboard.com/wp-content/uploads/2017/02/counter_strike_go_7.jpg?fit=1920%2C1080&ssl=1" class="coupon-img img-rounded" >
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-12">
+                        <p3>Hey dudes, look at this ! Nice teamwork ;)</p3>
+                    </div>
+                    <div class="comments">
+                        <b>John Lenon : </b>
+                        <div class="comment-wrap">
+
+                            <div class="comment-block">
+                                <p2 class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam reprehenderit quasi
+                                    sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p2>
+                                <div class="bottom-comment">
+                                    <div class="comment-date">Aug 24, 2014 @ 2:35 PM</div>
+                                    <ul class="comment-actions">
+                                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-thumbs-o-up"></i></a>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                        </div>
+
+                        <b>Cowboy Bebop : </b>
+                        <div class="comment-wrap">
+                            <div class="comment-block">
+                                <p2 class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p2>
+                                <div class="bottom-comment">
+                                    <div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
+                                    <ul class="comment-actions">
+                                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-thumbs-o-up"></i></a>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                        </div>
+                        <div class="comment-wrap">
+                            <div class="comment-block">
+                                <form action="">
+                                    <textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+                                    <a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                </form>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Répondre </button>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="coupon-code">
+                        Nombre de <i class="fa fa-lg fa-thumbs-o-up"></i> total :
+                        <span class="print">
+                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                    </span>
+                    </div>
+                    <div class="exp"> 23 </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
