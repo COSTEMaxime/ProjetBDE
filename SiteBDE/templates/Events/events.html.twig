@@ -1,20 +1,38 @@
-{% extends "base.html.twig" %}
-{% block body %}
-    <p>Evènements</p>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='/events/add'">Créer un évènement</button>
-    <figure class="snip1423">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample57.jpg" alt="sample57" />
-        <figcaption>
-            <h3>Titre</h3>
-            <p>BLABLABLABLA BLABLABLA</p>
-            <div class="price">
-                Prix :
-                <br/>
-                Date :
-                <br/>
-                <button type="button" class="btn btn-primary" onclick="window.location.href='/a'">Détails</button>
-            </div>
-        </figcaption><i class="ion-android-cart">+</i>
-        <a href="#"></a>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="../CSS/style.css" />
+        <!-- Thème index -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+        <!-- Thème police -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    {% endblock %}
+    <!--Bootstrap-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
+    <title>{% block title %}Site BDE{% endblock %}</title>
+
+</head>
+<body>
+{% block body %}
+    <div id="app">Une erreur est intervenue =( </div> <!-- Fais référence à App.vue-->
 {% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="{{ asset('build/app.js') }}"></script>
+    <script src="../JS/bs-animation.js"></script> <!-- place youre js file here -->
+    <script src="../JS/navbar.js"></script> <!-- place youre js file here -->
+{% endblock %}
+
+
+</body>
+
+</html>

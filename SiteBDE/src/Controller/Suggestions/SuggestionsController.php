@@ -16,6 +16,14 @@ class SuggestionsController extends Controller
     }
 
     /**
+     * @Route("/ideas/{slug}", name="ideaSpecific")
+     */
+    public function suggestion($slug)
+    {
+        return $this->render('/Suggestions/idea.html.twig');
+    }
+
+    /**
      * @Route("/ideas/add", name="addIdea")
      */
     public function add()
