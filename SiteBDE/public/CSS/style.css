@@ -11,11 +11,19 @@ body {
 html{ /* Empêcher la barre horizontale */
     overflow-x: hidden;
 }
+
+
 .top-corner{
     position: absolute;
     top: 80px;
     right: 0;
 }
+.top-corner-shop{
+    position: absolute;
+    top: 80px;
+    right: 80px;
+}
+
 
 @media (max-width:767px) {
     body {
@@ -76,7 +84,7 @@ body { margin-top:30px; }
     background-size: cover;
     min-height: 100%;
     height: auto;
-    margin-top: 50px;
+    margin-top: 130px;
     padding:0;
 
 }
@@ -224,11 +232,11 @@ a:hover {
 
 /* Page Header */
 .page-header {
-    background: #f96675;
+    background: #32557a; /* Couleur gestion boutique */
     margin: -30px -40px 40px;
     padding: 20px 40px;
-    border-top: 4px solid #ccc;
-    color: #999;
+    border-top: 4px solid #000;
+    color: #fff;
     text-transform: uppercase;
 }
 

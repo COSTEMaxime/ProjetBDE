@@ -18,57 +18,48 @@
     </ul>
     {% endblock %}
 {% block body %}
-
+   <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='/shop/cart'">Panier</button>
+   <button type="button" class="btn btn-warning top-corner-shop" onclick="window.location.href='/shop/admin'">Gestion Boutique</button>
     <!-- Menu de recherche -->
     <div class="container">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2">
                 <div class="input-group">
                     <div class="input-group-btn search-panel">
+
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Filter by</span> <span class="caret"></span>
+                            <span id="search_concept">Catégories</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#contains">Contains</a></li>
-                            <li><a href="#its_equal">It's equal</a></li>
-                            <li><a href="#greather_than">Greather than ></a></li>
-                            <li><a href="#less_than">Less than < </a></li>
-                            <li class="divider"></li>
-                            <li><a href="#all">Anything</a></li>
+                            <li><a href="#contains">Chaussures</a></li>
+                            <li><a href="#its_equal">Coussin</a></li>
+                            <li><a href="#greather_than">Chemise</a></li>
+                            <li><a href="#less_than">Veste</a></li>
                         </ul>
-                        <!-- Barre Slide -->
+                    </div>
+                    <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept2">Prix</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu2">
+                        <li><a href="#contains">10 - 20 €</a></li>
+                        <li><a href="#its_equal">20 - 30 €</a></li>
+                        <li><a href="#greather_than">40 - 50 €</a></li>
+                        <li><a href="#less_than">50 - 60 €</a></li>
+                    </ul>
                     </div>
                     <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Search term...">
+                    <input type="text" class="form-control" name="x" placeholder="Rechercher le produit">
                     <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        <br/>
                 </span>
                 </div>
             </div>
         </div>
     </div>
     <br/>
-    <div data-role="page">
-        <div data-role="header">
-            <h1>Range Slider</h1>
-        </div>
 
-        <div data-role="main" class="ui-content">
-            <form method="post" action="/action_page_post.php">
-                <div data-role="rangeslider">
-                    <label for="price-min">Price:</label>
-                    <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000">
-                    <label for="price-max">Price:</label>
-                    <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000">
-                </div>
-                <input type="submit" data-inline="true" value="Submit">
-                <p>The range slider can be useful for allowing users to select a specific price range when browsing products.</p>
-            </form>
-        </div>
-    </div>
-
-
-    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='#'">Panier</button>
     <div class="container">
         <div class="col-xs-12">
             <div class="carousel slide" id="myCarousel">
@@ -84,24 +75,9 @@
                                         <h4>Tître</h4>
                                         <p2>Description produit </p2>
                                         <br/>
-                                        <p2>Prix</p2>
+                                        <b> 40 €</b>
                                         <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
+                                        <button type="button" class="btn btn-success center">Ajouter Panier</button>
                                     </div>
                                 </div>
                             </li>
@@ -137,149 +113,8 @@
                             </li>
                         </ul>
                     </div><!-- /Slide1 -->
-                    <div class="item">
-                        <ul class="thumbnails">
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div><!-- /Slide2 -->
-                    <div class="item">
-                        <ul class="thumbnails">
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div><!-- /Slide3 -->
-                </div>
-
-
-                <nav>
-                    <ul class="control-box pager">
-                        <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-                        <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
-                    </ul>
-                </nav>
-                <!-- /.control-box -->
-
+                </div><!-- /.control-box -->
             </div><!-- /#myCarousel -->
-
         </div><!-- /.col-xs-12 -->
-
     </div><!-- /.container -->
-
 {% endblock %}
