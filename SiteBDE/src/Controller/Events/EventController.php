@@ -16,13 +16,6 @@ class EventController extends Controller
     }
 
     /**
-     * @Route("/events/add", name="addEvent")
-     */
-    public function add()
-    {
-        return $this->render('/Events/event_add.html.twig');
-    }
-    /**
      * @Route("/events/{slug}", name="eventSpecific")
      */
     public function event($slug)
@@ -30,4 +23,11 @@ class EventController extends Controller
         return $this->render('/Events/event.html.twig');
     }
 
+    /**
+     * @Route("/events/add", name="addEvent")
+     */
+    public function add()
+    {
+        return $this->render('/Events/event_add.html.twig');
+    }
 }
