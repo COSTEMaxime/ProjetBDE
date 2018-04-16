@@ -2,49 +2,62 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\UserEntity;
+use App\Form\LoginForm;
 
 class LoginController extends Controller
 {
     /**
      * @Route("/login", name="login")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $login = null;
-        $mdp = null;
+        $task = new LoginForm();
+        $form = $this->createFormBuilder($task)
+            ->add('login', TextType::class)
+            ->add('password', textType::class)
+            ->add('Connect', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
 
-        if(isset($_POST['login']))  {
-            $login = $_POST['login'];
-        }
+        $form->handleRequest($request);
 
-        if(isset($_POST['mdp']))    {
-            $mdp = $_POST['mdp'];
-        }
-
-        if($this->isLoginCorrect($login, $mdp))
+        if($form->isSubmitted() && $form->isValid())
         {
-            $_SESSION['connected'] = true;
-            $_SESSION['status'] = $this->getStatus($login);
-        }
-        else
-        {
-            $_SESSION['connected'] = false;
-            $_SESSION['wrongPassword'] = true;
-        }
+            $task = $form->getData();
 
-        return $this->render('index.html.twig');
+            $login = $task->getLogin();
+            $password = $task->getPassword();
+
+            if($this->isLoginCorrect($login, $password))
+            {
+                $_SESSION['connected'] = true;
+                $_SESSION['status'] = $this->getStatus($login);
+            }
+            else
+            {
+                $_SESSION['connected'] = false;
+                $_SESSION['wrongPassword'] = true;
+            }
+
+            return $this->redirectToRoute('index.html.twig');
+        }
+        return $this->render('login/index.html.twig', [
+            'controller_name' => 'LoginController'
+        ]);
     }
 
-    function isLoginCorrect($login, $mdp)
+    function isLoginCorrect($login, $password)
     {
         $result = $this->getDoctrine()
             ->getRepository(UserEntity::class)
             ->findOneBy([
                 'mail' => $login,
-                'mdp' => $mdp
+                'mdp' => $password
             ]);
         return $result;
     }
