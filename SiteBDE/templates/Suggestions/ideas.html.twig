@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,3 +37,59 @@
 </body>
 
 </html>
+=======
+{% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="active">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="">
+            <a href="/shop">Boutique</a>
+        </li>
+    </ul>
+    {% endblock %}
+
+{% block body %}
+    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='/ideas/add'">Proposer un évènement</button>
+
+    <figure class="snip1423">
+        <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
+            <h3>LAN CESI CS GO</h3>
+            <p4>Une LAN de CS Go au CESI</p4>
+            <br/>
+            <button type="button" class="btn btn-success">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+            </button>
+            <button type="button" class="btn btn-danger">
+                <span class="glyphicon glyphicon-thumbs-down"></span>
+            </button>
+            <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/promote/exemple'">Transformer</button>
+            <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b> 40</b>
+    </figure>
+
+    <figure class="snip1423">
+        <img src="https://www.reunion.fr/sites/crt-reunion/files/styles/ratio_5_4/public/visuel/montagnevueduciel56cirquespitonsremparts-creditirt-sergegelabertdts122014.jpg?itok=kZ3HC4ST" alt="sample57" />
+        <h3>Randonnée en montagne</h3>
+        Partons à l'ile de la réunion prendre un bon bol d'air frais !
+        <br/>
+        <button type="button" class="btn btn-success">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+        </button>
+        <button type="button" class="btn btn-danger">
+            <span class="glyphicon glyphicon-thumbs-down"></span>
+        </button>
+        <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/promote/exemple'">Transformer</button>
+        <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b> 12</b>
+    </figure>
+
+{% endblock %}
+>>>>>>> Render

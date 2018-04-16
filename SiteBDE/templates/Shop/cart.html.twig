@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,29 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+=======
+{% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="active">
+            <a href="/shop">Boutique</a>
+        </li>
+    </ul>
+    {% endblock %}
+{% block body %}
+    <p>Cart</p>
+>>>>>>> Render
 
     <title>{% block title %}Site BDE{% endblock %}</title>
 
