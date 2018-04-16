@@ -3,12 +3,13 @@ body {
     height:auto;
     /*https://img1.picload.org/image/ddolpcwa/woman-2486528_1920.jpg*/
     background-image:url('http://www.intrawallpaper.com/static/images/City_Wallpaper_1080p_12.jpg');
+    background-color : black;
     background-size:cover;
-    background-position:center;
+    background-position:center center;
     background-repeat:no-repeat;
 }
-html{
-    overflow: auto;
+html{ /* Empêcher la barre horizontale */
+    overflow-x: hidden;
 }
 .top-corner{
     position: absolute;
@@ -72,16 +73,14 @@ body { margin-top:30px; }
 
 .footer-wrap {
     background: url(http://hassandesigns.top/html/classified/images/footer-bg.jpg) no-repeat top;
-    height: 60px;
     background-size: cover;
     min-height: 100%;
     height: auto;
-    /* Negative indent footer by its height */
-    margin: 0 auto -60px;
-    /* Pad bottom by footer height */
-    padding: 0 0 40px;
+    margin-top: 50px;
+    padding:0;
 
 }
+
 
 .footer-wrap h3 {
     color: #fff;
@@ -430,7 +429,7 @@ li { list-style-type:none;} /*Retire les points*/
     }
 }
 
-.coupon #title span {
+.coupon #title span { /* Texte sur le bandeau */
     float: right;
     margin-top: 5px;
     font-weight: 700;
