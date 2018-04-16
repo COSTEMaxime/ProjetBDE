@@ -2,69 +2,75 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\UserEntity;
+use App\Form\RegisterForm;
 
 class RegisterController extends Controller
 {
     /**
      * @Route("/register", name="register")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $firstName = null;
-        $lastName = null;
-        $email = null;
-        $password = null;
-        $passwordConfirm = null;
+        $task = new RegisterForm();
+        $form = $this->createFormBuilder($task)
+            ->add('firstName', TextType::class)
+            ->add('lastName', textType::class)
+            ->add('email', textType::class)
+            ->add('password', textType::class)
+            ->add('passwordConfirm', textType::class)
+            ->add('Connect', SubmitType::class, array('label' => 'Create Task'))
+            ->getForm();
 
-        if (isset($_POST['prenom']))  {
-            $firstName = $_POST['prenom'];
-        }
+        $form->handleRequest($request);
 
-        if (isset($_POST['nom']))  {
-            $lastName = $_POST['nom'];
-        }
-
-        if (isset($_POST['email']))  {
-            $email = $_POST['email'];
-        }
-
-        if (isset($_POST['mdp1']))  {
-            $password = $_POST['mdp1'];
-        }
-
-        if (isset($_POST['mdp2']))   {
-            $passwordConfirm = $_POST['mdp2'];
-        }
-
-        if (!$this->userExist($email))
+        if($form->isSubmitted() && $form->isValid())
         {
-            if ($password === $passwordConfirm)
+            $task = $form->getData();
+
+            $firstName          =   $task->getFirstName();
+            $lastName           =   $task->getLastName();
+            $email              =   $task->gestEmail();
+            $password           =   $task->getPassword();
+            $passwordConfirm    =   $task->getPasswordConfirm();
+
+
+            if (!$this->userExist($email))
             {
-                $manager = $this->getDoctrine()->getManager();
+                if ($password === $passwordConfirm)
+                {
+                    $manager = $this->getDoctrine()->getManager();
 
-                $user = new UserEntity();
-                $user->setPrenom($firstName);
-                $user->setNom($lastName);
-                $user->setMail($email);
-                $user->setIDStatus(0);
+                    $user = new UserEntity();
+                    $user->setPrenom($firstName);
+                    $user->setNom($lastName);
+                    $user->setMail($email);
+                    $user->setIDStatus(0);
 
-                $manager->persist($user);
-                $manager->flush();
+                    $manager->persist($user);
+                    $manager->flush();
+
+                    return $this->redirectToRoute('index.html.twig');
+                }
+                else
+                {
+                    $_SESSION['passwordsDoesNotMatch'] = true;
+                    return $this->redirectToRoute('register/index.html.twig');
+                }
             }
             else
             {
-                $_SESSION['passwordsDoesNotMatch'] = true;
+                $_SESSION['emailAlreadyTaken'] = true;
+                return $this->redirectToRoute('register/index.html.twig');
             }
         }
-        else
-        {
-            $_SESSION['emailAlreadyTaken'] = true;
-        }
 
-        return $this->render('login/index.html.twig');
+        return $this->render('register/index.html.twig');
     }
 
     function userExist($email)
