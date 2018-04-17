@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\Entity\UserEntity;
 use App\Form\LoginForm;
 
@@ -20,8 +21,8 @@ class LoginController extends Controller
         $task = new LoginForm();
         $form = $this->createFormBuilder($task)
             ->add('login', TextType::class)
-            ->add('password', textType::class)
-            ->add('Connect', SubmitType::class, array('label' => 'Create Task'))
+            ->add('password', PasswordType::class)
+            ->add('Connect', SubmitType::class, array('label' => 'Se connecter','attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);

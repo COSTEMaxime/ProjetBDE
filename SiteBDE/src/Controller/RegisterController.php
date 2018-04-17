@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\Entity\UserEntity;
 use App\Form\RegisterForm;
 
@@ -22,9 +23,9 @@ class RegisterController extends Controller
             ->add('firstName', TextType::class)
             ->add('lastName', textType::class)
             ->add('email', textType::class)
-            ->add('password', textType::class)
-            ->add('passwordConfirm', textType::class)
-            ->add('Connect', SubmitType::class, array('label' => 'Create Task'))
+            ->add('password', PasswordType::class)
+            ->add('passwordConfirm', PasswordType::class)
+            ->add('Connect', SubmitType::class, array('label' => "S'enregistrer",'attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);

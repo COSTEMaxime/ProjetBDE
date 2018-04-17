@@ -1,23 +1,47 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello !{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-        ! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/LoginController.php</code></li>
-        <li>Your template at <code>templates/login/index.html.twig</code></li>
+{% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="active">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="">
+            <a href="/shop">Boutique</a>
+        </li>
     </ul>
-</div>
+{% endblock %}
+{% block body %}
+{# add this at the beginning of your template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
+        <div id="login-overlay" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="col-xs-15">
+                        <div class="well">
+                            {{ form_start(form) }}
+                                {{ form_errors(form) }}
+                                <div class="form-group"><!-- login -->
+                                    {{ form_label(form.login) }} <!-- Label name -->
+                                    {{ form_widget(form.login) }} <!-- Erreurs de validation -->
+                                    {{ form_row(form.login) }} <!-- Affiche la row -->
+                                </div>
+                                <div class="form-group"><!-- password -->
+                                    <b>Mot de passe : </b>
+                                    {{ form_widget(form.password) }}
+                                    {{ form_row(form.password) }}
+                                </div>
+                            <!-- Boutton -->
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}
