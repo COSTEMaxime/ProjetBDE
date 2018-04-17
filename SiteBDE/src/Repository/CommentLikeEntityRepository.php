@@ -4,14 +4,9 @@ namespace App\Repository;
 
 use App\Entity\CommentLikeEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method CommentLikeEntity|null find($id, $lockMode = null, $lockVersion = null)
- * @method CommentLikeEntity|null findOneBy(array $criteria, array $orderBy = null)
- * @method CommentLikeEntity[]    findAll()
- * @method CommentLikeEntity[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class CommentLikeEntityRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
@@ -19,32 +14,21 @@ class CommentLikeEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, CommentLikeEntity::class);
     }
 
-//    /**
-//     * @return CommentLikeEntity[] Returns an array of CommentLikeEntity objects
-//     */
-    /*
-    public function findByExampleField($value)
+    public function getNbLikes($id)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        try {
+            return $this->createQueryBuilder('l')
+                ->select('COUNT(l)')
+                ->where('l.ID_commentaire = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NonUniqueResultException $exception)
+        {
+            echo $exception;
+        }
 
-    /*
-    public function findOneBySomeField($value): ?CommentLikeEntity
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return 0;
     }
-    */
 }
