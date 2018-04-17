@@ -28,7 +28,7 @@ class SuggestionsController extends Controller
      */
     public function add()
     {
-        return $this->render('/Suggestions/add.html.twig');
+        return $this->render('Suggestions/add.html.twig');
     }
 
     /**

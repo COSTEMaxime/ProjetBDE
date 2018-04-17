@@ -70,7 +70,9 @@ class RegisterController extends Controller
             }
         }
 
-        return $this->render('register/index.html.twig');
+        return $this->render('register/index.html.twig', [
+            'form' => $form
+        ]);
     }
 
     function userExist($email)

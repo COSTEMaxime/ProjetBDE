@@ -30,8 +30,8 @@ class LoginController extends Controller
         {
             $task = $form->getData();
 
-            $login = $task->getLogin();
-            $password = $task->getPassword();
+            $login      =   $task->getLogin();
+            $password   =   $task->getPassword();
 
             if($this->isLoginCorrect($login, $password))
             {
@@ -47,7 +47,7 @@ class LoginController extends Controller
             return $this->redirectToRoute('index.html.twig');
         }
         return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController'
+            'form' => $form
         ]);
     }
 
