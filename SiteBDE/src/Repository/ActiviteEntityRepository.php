@@ -6,12 +6,6 @@ use App\Entity\ActiviteEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method ActiviteEntity|null find($id, $lockMode = null, $lockVersion = null)
- * @method ActiviteEntity|null findOneBy(array $criteria, array $orderBy = null)
- * @method ActiviteEntity[]    findAll()
- * @method ActiviteEntity[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class ActiviteEntityRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
@@ -19,32 +13,8 @@ class ActiviteEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, ActiviteEntity::class);
     }
 
-//    /**
-//     * @return ActiviteEntity[] Returns an array of ActiviteEntity objects
-//     */
-    /*
-    public function findByExampleField($value)
+    public function findAllLimit($limit)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->findBy(array(), array('id' => 'DESC'), $limit, null);
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?ActiviteEntity
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
