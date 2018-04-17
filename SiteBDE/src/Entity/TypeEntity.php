@@ -16,6 +16,16 @@ class TypeEntity
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $name;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function getId()
     {
         return $this->id;
