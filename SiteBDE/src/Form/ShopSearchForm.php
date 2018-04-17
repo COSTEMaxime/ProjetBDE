@@ -8,18 +8,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ShopSearchForm
 {
     protected $category;
-    protected $price;
-
+    protected $maxPrice;
     protected $research;
 
-    public function getPrice()
+    public function getMaxPrice()
     {
-        return $this->price;
+        return $this->maxPrice;
     }
 
-    public function setPrice($price): void
+    public function setMaxPrice($maxPrice): void
     {
-        $this->price = $price;
+        $this->maxPrice = $maxPrice;
     }
 
     public function getResearch()

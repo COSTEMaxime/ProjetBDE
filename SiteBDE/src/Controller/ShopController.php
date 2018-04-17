@@ -4,9 +4,12 @@ namespace App\Controller;
 
 use App\Entity\CategoryFormEntity;
 use App\Entity\PriceFormEntity;
+use App\Entity\ProduitEntity;
 use App\Entity\TypeEntity;
 use App\Form\ShopSearchForm;
+use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,20 +36,8 @@ class ShopController extends Controller
                 'expanded' => true,
                 'required' => true
             ])
-            ->add('price', ChoiceType::class, [
-                'choices' => [
-                    new PriceFormEntity(0, 10),
-                    new PriceFormEntity(10, 20),
-                    new PriceFormEntity(20, 30),
-                    new PriceFormEntity(30, 40),
-                ],
-                'choice_label' => function($price)   {
-                    /** @var PriceFormEntity $price */
-                    return sprintf('%.2f€ - %.2f€', $price->getMin(), $price->getMax());
-                },
-                'multiple' => true,
-                'expanded' => true,
-                'required' => true
+            ->add('maxPrice', IntegerType::class, [
+                'required' => false
             ])
             ->add('research', TextType::class, [
                 'required' => false
@@ -58,19 +49,25 @@ class ShopController extends Controller
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $var = $form->getData();
+            $data = $form->getData();
 
-            //Category
-            foreach ($var->getCategory() as $var2)
-            {
-                /** @var CategoryFormEntity $var2 */
-                echo $var2->getName();
+            $category = array();
+            foreach ($data->getCategory() as $cat) {
+                /** @var CategoryFormEntity $cat */
+                array_push($category, $cat->getName());
             }
 
-            //Price
+            $maxPrice = is_null($data->getMaxPrice()) ? null : $data->getMaxPrice();
+            $research = is_null($data->getResearch()) ? null : $data->getResearch();
 
+            $result = $this->getDoctrine()
+                ->getRepository(ProduitEntity::class)
+                ->findAllWithCriteria($category, $maxPrice, $research);
 
-            //Research
+            return $this->render('Shop/shop.html.twig', [
+                'form' => $form->createView(),
+                'result' => $result
+            ]);
         }
 
         return $this->render('/Shop/shop.html.twig', [
