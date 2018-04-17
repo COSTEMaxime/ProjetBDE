@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d64e0df9-ed58-4c8f-b002-d617ca6b0c85" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php" />
       <change beforePath="$PROJECT_DIR$/SiteBDE/src/Controller/RegisterController.php" afterPath="$PROJECT_DIR$/SiteBDE/src/Controller/RegisterController.php" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/templates/UserGestion/register.html.twig" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig" afterPath="$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig" />
       <change beforePath="$PROJECT_DIR$/SiteBDE/templates/base.html.twig" afterPath="$PROJECT_DIR$/SiteBDE/templates/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig" afterPath="$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/SiteBDE/templates/register/index.html.twig" afterPath="$PROJECT_DIR$/SiteBDE/templates/register/index.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,20 +33,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gestion.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Shop/gestion.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="19" column="16" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="183" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SiteBDE/templates/register/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="773">
+            <state relative-caret-position="473">
               <caret line="44" column="56" lean-forward="false" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
               <folding />
             </state>
@@ -59,43 +46,59 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="35" column="51" lean-forward="false" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+            <state relative-caret-position="500">
+              <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="event.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2620">
+              <caret line="146" column="119" lean-forward="false" selection-start-line="146" selection-start-column="119" selection-end-line="146" selection-end-column="119" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="promote.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/promote.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomepageController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-              <folding>
-                <element signature="e#34#79#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="76" column="64" lean-forward="false" selection-start-line="76" selection-start-column="64" selection-end-line="76" selection-end-column="64" />
+            <state relative-caret-position="1520">
+              <caret line="83" column="27" lean-forward="false" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="42" />
-              <folding>
-                <element signature="e#34#92#0#PHP" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -110,21 +113,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/add.html.twig">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="26" column="64" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="419">
+              <caret line="71" column="90" lean-forward="false" selection-start-line="71" selection-start-column="90" selection-end-line="71" selection-end-column="90" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shop.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Shop/shop.html.twig">
+      <file leaf-file-name="event_add.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event_add.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="98" column="49" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="119" selection-end-column="14" />
+            <state relative-caret-position="840">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -172,16 +175,16 @@
         <option value="$PROJECT_DIR$/SiteBDE/templates/Events/events.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/Shop/shop.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/Shop/article.html.twig" />
-        <option value="$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/src/Controller/Events/EventController.php" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/Shop/gestion.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/Shop/cart.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/public/CSS/style.css" />
-        <option value="$PROJECT_DIR$/SiteBDE/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/UserGestion/register.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/templates/register/index.html.twig" />
-        <option value="$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php" />
+        <option value="$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig" />
+        <option value="$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig" />
+        <option value="$PROJECT_DIR$/SiteBDE/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/SiteBDE/src/Controller/RegisterController.php" />
       </list>
     </option>
@@ -289,8 +292,8 @@
       <path value="$PROJECT_DIR$/SiteBDE/vendor/symfony/property-access" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="773" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -464,15 +467,15 @@
       <workItem from="1523480049359" duration="809000" />
       <workItem from="1523515819350" duration="1639000" />
       <workItem from="1523869404114" duration="19173000" />
-      <workItem from="1523949052135" duration="3060000" />
+      <workItem from="1523949052135" duration="7105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24681000" />
+    <option name="totallyTimeSpent" value="28726000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20202559" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -529,7 +532,7 @@
         <state relative-caret-position="300">
           <caret line="15" column="21" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="21" />
           <folding>
-            <element signature="e#34#92#0#PHP" expanded="true" />
+            <element signature="e#34#92#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -586,6 +589,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -626,14 +630,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/idea.html.twig" />
-    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/UserGestion/LoginController.php" />
     <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/UserGestion/RegisterController.php" />
     <entry file="file://$PROJECT_DIR$/SiteBDE/assets/js/components/Header.vue" />
@@ -721,20 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/promote.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/ideas.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -758,22 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event_add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Shop/gestion.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -790,34 +756,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/events.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="20" column="105" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
           <caret line="26" column="64" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="76" column="64" lean-forward="false" selection-start-line="76" selection-start-column="64" selection-end-line="76" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="35" column="51" lean-forward="false" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -830,31 +772,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="42" />
+          <folding>
+            <element signature="e#34#92#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/templates/register/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="773">
+        <state relative-caret-position="473">
           <caret line="44" column="56" lean-forward="false" selection-start-line="44" selection-start-column="56" selection-end-line="44" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/LoginController.php">
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event_add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="e#34#92#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="840">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="48" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/events.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="105" lean-forward="false" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/HomepageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Suggestions/promote.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/Events/event.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2620">
+          <caret line="146" column="119" lean-forward="false" selection-start-line="146" selection-start-column="119" selection-end-line="146" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/login/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SiteBDE/src/Controller/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding>
-            <element signature="e#34#79#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="1520">
+          <caret line="83" column="27" lean-forward="false" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SiteBDE/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="71" column="90" lean-forward="false" selection-start-line="71" selection-start-column="90" selection-end-line="71" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>
