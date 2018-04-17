@@ -2,11 +2,14 @@
 
 namespace App\Form;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class ShopSearchForm
 {
     protected $category;
     protected $price;
+
     protected $research;
 
     public function getPrice()

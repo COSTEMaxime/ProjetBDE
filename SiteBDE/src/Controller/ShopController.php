@@ -30,7 +30,8 @@ class ShopController extends Controller
                     return $category->getName();
                 },
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'required' => true
             ])
             ->add('price', ChoiceType::class, [
                 'choices' => [
@@ -44,9 +45,12 @@ class ShopController extends Controller
                     return sprintf('%.2f€ - %.2f€', $price->getMin(), $price->getMax());
                 },
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
+                'required' => true
             ])
-            ->add('research', TextType::class)
+            ->add('research', TextType::class, [
+                'required' => false
+            ])
             ->add('submit', SubmitType::class, array('label' => 'Submit'))
             ->getForm();
 
