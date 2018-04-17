@@ -78,8 +78,17 @@
                                             </li>
                                         </ul>
                                     </li>
-                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-print"></i> Liste Inscrits</a>
-
+                                    <li class="dropdown">
+                                        <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Liste inscrit<b class="caret"></b></a>
+                                        <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                                            <li class="">
+                                                 <a href="{{ path('login') }}"><i class="fa fa-lg fa-print"></i> Télécharger en CSV </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="{{ path('register') }}"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
+                                            </li>
+                                        </ul>
+                                    </li>
                     </span>
                     </div>
                     <div class="exp">

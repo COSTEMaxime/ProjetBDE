@@ -22,7 +22,7 @@ class LoginController extends Controller
         $form = $this->createFormBuilder($task)
             ->add('login', TextType::class)
             ->add('password', PasswordType::class)
-            ->add('Connect', SubmitType::class, array('label' => 'Se connecter','attr'=> array('class'=>'btn btn-primary')))
+            ->add('Connect', SubmitType::class, array('label' => 'Se connecter','attr'=> array('class'=>'btn btn-primary','onclick'=>"verifierFormulaire()")))
             ->getForm();
 
         $form->handleRequest($request);
@@ -44,13 +44,14 @@ class LoginController extends Controller
                 $_SESSION['connected'] = false;
                 $_SESSION['wrongPassword'] = true;
             }
-
-            return $this->redirectToRoute('index.html.twig');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('login/index.html.twig', [
             'form' => $form->createView()
         ]);
     }
+
+
 
     function isLoginCorrect($login, $password)
     {
@@ -71,4 +72,6 @@ class LoginController extends Controller
 
         return $result->getIDStatus();
     }
+
+
 }

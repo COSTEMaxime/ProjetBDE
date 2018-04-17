@@ -44,4 +44,18 @@
                 </div>
             </div>
         </div>
+{% block myJavascript %}
+<script type="text/javascript" language="javascript">
+        function verifierFormulaire ( )
+        {
+            var nom = $('input[name="form[login]"]').val(); //On récupère le nom
+            var pattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            if(pattern.test(nom)){ // Si true
+                //Do nothing
+            }else{
+                alert("Veuillez rentrer une adresse email valide !")
+            }
+        }
+</script>
+{% endblock %}
 {% endblock %}

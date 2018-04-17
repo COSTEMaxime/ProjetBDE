@@ -28,6 +28,7 @@ class RegisterController extends Controller
             ->add('Connect', SubmitType::class, array('label' => "S'enregistrer",'attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
 
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())

@@ -7,6 +7,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SuggestionsController extends Controller
 {
+
+    /**
+     * @Route("/ideas/add", name="addIdea")
+     */
+    public function add()
+    {
+        return $this->render('Suggestions/add.html.twig');
+    }
+
     /**
      * @Route("/ideas", name="ideas")
      */
@@ -21,14 +30,6 @@ class SuggestionsController extends Controller
     public function suggestion($slug)
     {
         return $this->render('/Suggestions/idea.html.twig');
-    }
-
-    /**
-     * @Route("/ideas/add", name="addIdea")
-     */
-    public function add()
-    {
-        return $this->render('Suggestions/add.html.twig');
     }
 
     /**
