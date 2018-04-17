@@ -36,7 +36,7 @@ class RegisterController extends Controller
 
             $firstName          =   $task->getFirstName();
             $lastName           =   $task->getLastName();
-            $email              =   $task->gestEmail();
+            $email              =   $task->getEmail();
             $password           =   $task->getPassword();
             $passwordConfirm    =   $task->getPasswordConfirm();
 
@@ -51,12 +51,13 @@ class RegisterController extends Controller
                     $user->setPrenom($firstName);
                     $user->setNom($lastName);
                     $user->setMail($email);
+                    $user->setMdp($password);
                     $user->setIDStatus(0);
 
                     $manager->persist($user);
                     $manager->flush();
 
-                    return $this->redirectToRoute('index.html.twig');
+                    return $this->redirectToRoute('homepage');
                 }
                 else
                 {
@@ -67,7 +68,7 @@ class RegisterController extends Controller
             else
             {
                 $_SESSION['emailAlreadyTaken'] = true;
-                return $this->redirectToRoute('register/index.html.twig');
+                return $this->redirectToRoute('/register/index.html.twig');
             }
         }
 
@@ -81,7 +82,6 @@ class RegisterController extends Controller
         $result = $this->getDoctrine()
             ->getRepository(UserEntity::class)
             ->find($email);
-
         return $result;
     }
 }
