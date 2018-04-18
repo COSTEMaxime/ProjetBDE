@@ -19,36 +19,26 @@
     {% endblock %}
 
 {% block body %}
-    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer un évènement</button>
+<button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer un évènement</button>
 
+{% for data in ideas%}
+
+{% set nblike = data.0.nbLike  - data.0.nbDislike %}
+    <!--{{ dump(data) }}-->
     <figure class="snip1423">
-        <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
-            <h3>LAN CESI CS GO</h3>
-            <p4>Une LAN de CS Go au CESI</p4>
+        <img src="Images/{{ data.pathPhoto}}" alt="sample57" />
+            <h3>{{ data.0.titre }}</h3>
+            <p4>{{ data.0.contenu }}</p4>
             <br/>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" onclick="window.location.href='{{ path('likeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-up"></span>
             </button>
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" onclick="window.location.href='{{ path('dislikeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-down"></span>
             </button>
-            <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/promote/exemple'">Transformer</button>
-            <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b> 40</b>
+            <button type="button" class="btn btn-warning" onclick="window.location.href='{{ path('transformIdea') }}'">Transformer</button>
+            <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b>{{ nblike }}</b>
     </figure>
-
-    <figure class="snip1423">
-        <img src="https://www.reunion.fr/sites/crt-reunion/files/styles/ratio_5_4/public/visuel/montagnevueduciel56cirquespitonsremparts-creditirt-sergegelabertdts122014.jpg?itok=kZ3HC4ST" alt="sample57" />
-        <h3>Randonnée en montagne</h3>
-        Partons à l'ile de la réunion prendre un bon bol d'air frais !
-        <br/>
-        <button type="button" class="btn btn-success">
-            <span class="glyphicon glyphicon-thumbs-up"></span>
-        </button>
-        <button type="button" class="btn btn-danger">
-            <span class="glyphicon glyphicon-thumbs-down"></span>
-        </button>
-        <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/promote/exemple'">Transformer</button>
-        <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b> 12</b>
-    </figure>
+{% endfor %}
 
 {% endblock %}
