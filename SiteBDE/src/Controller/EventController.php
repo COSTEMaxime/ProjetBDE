@@ -24,45 +24,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class EventController extends Controller
 {
-    /**
-     *  @Route("/events/{slug}", name="event")
-     */
-    public function event($slug)
-    {
-        $session = new Session();
-
-        $event = $this->getDoctrine()
-            ->getRepository(ManifestationEntity::class)
-            ->findOneBy(array('titre' => $slug));
-
-        /*
-        //Get comments where parent is idea
-        $comments = $this->getDoctrine()
-            ->getRepository(CommentEntity::class)
-            ->findBy(['id' => $ideasId]);
-
-        //Get the number of like per comment
-        $commentsLikes = array();
-        foreach ($comments as $comment) {
-            /** @var CommentEntity $comment */
-        /**array_push($commentsLikes, [
-        $comment->getId() => $this->getDoctrine()
-        ->getRepository(CommentLikeEntity::class)
-        ->getNbLikes($comment->getId())
-        ]);
-        }
-
-        //Get ideas' id
-        $ideasId = array();
-        foreach ($ideas as $idea) {
-        /** @var ActiviteEntity $idea */
-        /*array_push($ideasId, $idea->getId());
-    }*/
-
-        return $this->render('Events/event.html.twig', [
-            'event' => $event
-        ]);
-    }
 
     /**
      * @Route("/events/{slug}/toPDF", name="downloadEventPDF", methods={"POST"})
@@ -102,6 +63,48 @@ class EventController extends Controller
     }
 
     /**
+     *  @Route("/events/{slug}", name="event")
+     */
+    public function event($slug)
+    {
+        $session = new Session();
+
+        $event = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findOneBy(array('titre' => $slug));
+
+        /*
+        //Get comments where parent is idea
+        $comments = $this->getDoctrine()
+            ->getRepository(CommentEntity::class)
+            ->findBy(['id' => $ideasId]);
+
+        //Get the number of like per comment
+        $commentsLikes = array();
+        foreach ($comments as $comment) {
+            /** @var CommentEntity $comment */
+        /**array_push($commentsLikes, [
+        $comment->getId() => $this->getDoctrine()
+        ->getRepository(CommentLikeEntity::class)
+        ->getNbLikes($comment->getId())
+        ]);
+        }
+
+        //Get ideas' id
+        $ideasId = array();
+        foreach ($ideas as $idea) {
+        /** @var ActiviteEntity $idea */
+        /*array_push($ideasId, $idea->getId());
+    }*/
+
+        return $this->render('Events/event.html.twig', [
+            'event' => $event
+
+        ]);
+    }
+
+
+    /**
      * @Route("/events", name="events")
      */
     public function index()
@@ -113,8 +116,12 @@ class EventController extends Controller
             ->getRepository(ManifestationEntity::class)
             ->findAllLimit(10);
 
-        return $this->render('Events/event.html.twig', [
-            'events' => $events
+
+        //$url = $this->generateUrl('event', array('slug' => 'monSlug'));
+
+        return $this->render('event/index.html.twig', [
+            'events' => $events,
+            //'url' => $url
         ]);
     }
 

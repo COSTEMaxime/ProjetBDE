@@ -18,18 +18,18 @@
     </ul>
     {% endblock %}
 {% block body %}
-
+{{ dump(event) }}
     <div class="row" id="lightblue">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-info coupon"> <!-- Panel est deprecated, il faudrait peut-être le mettre à jour Emilien ;) -->
                     <div class="panel-title" id="title">
                         <div class="panel-heading" id="head">
                         <i class="fa fa-bullhorn fa-2x"></i>
-                        <span class="hidden-xs">LAN De Counter Strike</span>
+                        <span class="hidden-xs">{{ event.titre }}</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" class="coupon-img img-rounded">
+                    <img src="/Uploads/{{ event.image }}" class="coupon-img img-rounded">
                     <div class="col-md-9">
                         <ul class="items">
                             <li><b>Description de l'évènement :</b></li>
@@ -37,15 +37,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="offer text-info">
-                            <span class="number">39</span>
-                            <span class="cents"><sup>95</sup></span>
+                            <span class="number">{{ event.prix }}</span>
+                            <span class="cents"><sup>00</sup></span>
                             <span class="usd"><sup>€</sup></span>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <p3>Orientis vero limes in longum protentus et rectum ab Euphratis fluminis ripis ad usque supercilia porrigitur Nili,
-                            laeva Saracenis conterminans gentibus, dextra pelagi fragoribus patens, quam plagam Nicator Seleucus occupatam auxit magnum in modum,
-                            cum post Alexandri Macedonis obitum successorio iure teneret regna Persidis, efficaciae inpetrabilis rex, ut indicat cognomentum.</p3>
+                        <p3>{{ event.contenu }}</p3>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -87,10 +85,10 @@
                                         <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Liste inscrit<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li class="">
-                                                 <a href="{{ path('login') }}"><i class="fa fa-lg fa-print"></i> Télécharger en CSV </a>
+                                                 <a href="/events/{{ event.id }}/toPDF"><i class="fa fa-lg fa-print"></i> Télécharger en CSV </a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ path('register') }}"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
+                                                <a href="/events/{{ event.id }}/toCSV"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
                                             </li>
                                         </ul>
                                     </li>
