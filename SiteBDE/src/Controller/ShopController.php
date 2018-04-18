@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\CategoryFormEntity;
+use App\Entity\PanierEntity;
 use App\Entity\PhotoEntity;
 use App\Entity\ProduitEntity;
 use App\Entity\TypeEntity;
@@ -108,8 +109,22 @@ class ShopController extends Controller
     {
         $session = new Session();
 
-        return $this->render('/Shop/cart.html.twig');
+        $result = $this->getDoctrine()
+            ->getRepository(PanierEntity::class);
+        $req = $result->findAll(); //On récupère toutes les données
+        $panier = array(); //On stockera les données dans le tableau
+
+        foreach ($req as $data) {
+            $result2 = $this->getDoctrine()
+                ->getRepository(ProduitEntity::class);
+            $nomProduit = $result2->find($data->getIDproduit()); //On récupère les données de la table à partir de l'ID
+            array_push($panier, [$nomProduit,$data]);
+        }
+        return $this->render('Shop/cart.html.twig', [
+            'panier' => $panier,
+        ]);
     }
+
 
     /**
      * @Route("/product/new", name="newProduct", methods={"POST"})

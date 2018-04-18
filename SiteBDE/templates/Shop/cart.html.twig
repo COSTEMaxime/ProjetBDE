@@ -29,6 +29,7 @@
                             <div class="col-sm-12 col-md-10 col-md-offset-1">
                                 <table class="table table-hover">
                                     <thead>
+
                                     <tr>
                                         <th>Produit</th>
                                         <th>Quantité</th>
@@ -38,48 +39,37 @@
                                     </thead>
                                     <tbody>
                                     <!-- Bloc produit -->
+                                     {% set Total = 0 %} <!-- Initialisation -->
+                                     {% set Prix = 0 %} <!-- Initialisation -->
+                                    {% for content in panier %}
                                     <tr>
                                         <td class="col-sm-8 col-md-6">
                                             <div class="media">
                                                 <img class="thumbnail pull-left media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Nom du produit</h4>
+                                                    <h4 class="media-heading">{{ content[0].nom }}</h4>
                                                 </div>
                                             </div></td>
                                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                                            <input type="text" class="form-control" id="exampleInputEmail1" value="5">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" value="{{ content[1].quantite }}">
                                         </td>
-                                        <td class="col-sm-1 col-md-1 text-center"><strong>4.87 €</strong></td>
+                                        {% set Prix = content[0].prix * content[1].quantite %}
+                                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ Prix }} €</strong></td>
                                         <td class="col-sm-1 col-md-1">
                                             <button type="button" class="btn btn-danger">
                                                 <span class="glyphicon glyphicon-remove"></span> Retirer
                                             </button></td>
                                     </tr>
-
-                                    <tr>
-                                        <td class="col-sm-8 col-md-6">
-                                            <div class="media">
-                                                <img class="thumbnail pull-left media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Nom du produit</h4>
-                                                </div>
-                                            </div></td>
-                                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                                            <input type="text" class="form-control" id="exampleInputEmail1" value="5">
-                                        </td>
-                                        <td class="col-sm-1 col-md-1 text-center"><strong>4.87 €</strong></td>
-                                        <td class="col-sm-1 col-md-1">
-                                            <button type="button" class="btn btn-danger">
-                                                <span class="glyphicon glyphicon-remove"></span> Retirer
-                                            </button></td>
-                                    </tr>
+                                    {% set Total = Total + Prix %} <!-- Calcul du total -->
+                                    {% endfor %}
                                     <tr>
                                         <td>   </td>
                                         <td>   </td>
                                         <td>   </td>
                                         <!-- Bloc calcul -->
                                         <td><h3>Total</h3></td>
-                                        <td class="text-right"><h3><strong>31.53 €</strong></h3></td>
+
+                                        <td class="text-right"><h3><strong>{{ Total }} €</strong></h3></td>
                                     </tr>
                                     <tr>
                                         <td>   </td>
