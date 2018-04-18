@@ -3,11 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\CategoryFormEntity;
-use App\Entity\PriceFormEntity;
 use App\Entity\ProduitEntity;
 use App\Entity\TypeEntity;
 use App\Form\ShopSearchForm;
-use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

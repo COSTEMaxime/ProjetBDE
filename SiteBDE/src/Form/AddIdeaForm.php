@@ -7,7 +7,7 @@ class AddIdeaForm
 {
     protected $titre;
     protected $description;
-    protected $photo;
+    protected $image;
 
     public function getTitre()
     {
@@ -29,13 +29,13 @@ class AddIdeaForm
         $this->description = $description;
     }
 
-    public function getPhoto()
+    public function getImage()
     {
-        return $this->photo;
+        return $this->image;
     }
 
-    public function setPhoto($photo): void
+    public function setImage($image): void
     {
-        $this->photo = $photo;
+        $this->image = $image;
     }
 }
