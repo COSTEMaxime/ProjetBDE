@@ -22,89 +22,31 @@
    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='/shop/cart'">Panier</button>
    <button type="button" class="btn btn-warning top-corner-shop" onclick="window.location.href='/shop/admin'">Gestion Boutique</button>
     <!-- Menu de recherche -->
-    {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
-    <div id="login-overlay" class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-            <b> Rechercher un produit </b>
-                <div class="col-xs-15">
-                    <div class="well">
-                        {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
-                        {{ form_errors(form) }}
-                        <div class="form-check">
-                        <b>Cochez vos catégories :</b>
-                            {{ form_errors(form.category) }}
-                            {{ form_widget(form.category) }}
-                        </div>
-                        <div class="form-group">
-                        <b>Prix Max :</b>
-                            {{ form_errors(form.maxPrice) }}
-                            {{ form_widget(form.maxPrice) }}
-                        </div>
-                        <div class="form-group">
-                        <b>Recherchez :</b>
-                            {{ form_errors(form.research) }}
-                            {{ form_widget(form.research) }}
-                        </div>
-                        <!-- Boutton -->
-                        {{ form_end(form) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+ <p>TOP 3 PRODUITS DE NOTRE BOUTIQUE</p>
     <div class="container">
         <div class="col-xs-12">
             <div class="carousel slide" id="myCarousel">
                 <div class="carousel-inner">
                     <div class="item active">
                         <ul class="thumbnails">
+                        <button type="button" class="" onclick="window.location.href='{{ path('shopResearch') }}'">Faire des recherches</button>
+                        {% for i in 0..2 %}
                             <li class="col-sm-3">
                                 <div class="fff">
                                     <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                        <a href="#"><img src="Images/{{ articles[i].pathPhoto  }}" alt="" height="250" width="250"></a>
                                     </div>
                                     <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
+                                        <h4>{{ articles[i][0][i].nom }}</h4>
+                                        <p2>{{ articles[i][0][i].description }} </p2>
                                         <br/>
-                                        <b> 40 €</b>
+                                        <b> {{ articles[i][0][i].prix }} €</b>
                                         <br/>
                                         <button type="button" class="btn btn-success center">Ajouter Panier</button>
                                     </div>
                                 </div>
                             </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>Tître</h4>
-                                        <p2>Description produit </p2>
-                                        <br/>
-                                        <p2>Prix</p2>
-                                        <br/>
-                                        <button type="button" class="btn btn-success">Ajouter Panier</button>
-                                    </div>
-                                </div>
-                            </li>
+                        {% endfor %}
                         </ul>
                     </div><!-- /Slide1 -->
                 </div><!-- /.control-box -->
