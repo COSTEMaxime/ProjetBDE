@@ -16,8 +16,25 @@ class TypeEntity
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $nomCategorie;
+
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getNomCategorie(): ?string
+    {
+        return $this->nomCategorie;
+    }
+
+    public function setNomCategorie(string $nomCategorie): self
+    {
+        $this->nomCategorie = $nomCategorie;
+
+        return $this;
     }
 }
