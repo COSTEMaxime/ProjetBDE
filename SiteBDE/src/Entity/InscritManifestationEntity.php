@@ -21,6 +21,21 @@ class InscritManifestationEntity
      */
     private $IDuser;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $IDManifestation;
+
+    public function getIDManifestation()
+    {
+        return $this->IDManifestation;
+    }
+
+    public function setIDManifestation($IDManifestation): void
+    {
+        $this->IDManifestation = $IDManifestation;
+    }
+
     public function getId()
     {
         return $this->id;

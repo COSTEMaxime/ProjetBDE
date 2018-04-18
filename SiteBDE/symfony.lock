@@ -116,6 +116,15 @@
             "ref": "aaddfdf43cdecd4cf91f992052d76c2cadc04543"
         }
     },
+    "setasign/fpdf": {
+        "version": "1.8.1"
+    },
+    "setasign/fpdi": {
+        "version": "v2.0.3"
+    },
+    "setasign/fpdi-fpdf": {
+        "version": "v2.0.0"
+    },
     "swiftmailer/swiftmailer": {
         "version": "v6.0.2"
     },

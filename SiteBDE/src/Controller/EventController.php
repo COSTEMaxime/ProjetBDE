@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\CSVConverter;
+use App\Entity\InscritManifestationEntity;
 use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
 use App\Form\AddEventForm;
+use App\PDFConverter;
+use App\QueryResultConverter;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,9 +27,13 @@ class EventController extends Controller
     /**
      *  @Route("/events/{slug}", name="event")
      */
-    public function event()
+    public function event($slug)
     {
         $session = new Session();
+
+        $event = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findOneBy(array('titre' => $slug));
 
         /*
         //Get comments where parent is idea
@@ -51,9 +59,46 @@ class EventController extends Controller
         /*array_push($ideasId, $idea->getId());
     }*/
 
-        return $this->render('event/index.html.twig', [
-
+        return $this->render('Events/event.html.twig', [
+            'event' => $event
         ]);
+    }
+
+    /**
+     * @Route("/events/{slug}/toPDF", name="downloadEventPDF", methods={"POST"})
+     */
+    public function downloadPDF($slug)
+    {
+        try {
+            PDFConverter::generateFromData([
+                'data' => $this->getInscrits($slug),
+                'header' => $slug
+            ]);
+        }
+        catch (\Exception $e) {
+            echo $e->getMessage();
+            echo $e->getTraceAsString();
+        }
+    }
+
+    /**
+     * @Route("/events/{slug}/toCSV", name="downloadEventCSV", methods={"POST"})
+     */
+    public function downloadCSV($slug)
+    {
+        try {
+            CSVConverter::generateFromData([
+                'data' => $this->getInscrits($slug),
+                'header' => $slug
+            ]);
+        }
+        catch (\Exception $e)
+        {
+            echo $e->getMessage();
+            echo $e->getTraceAsString();
+        }
+
+        return $this->file($slug.'csv');
     }
 
     /**
@@ -68,17 +113,8 @@ class EventController extends Controller
             ->getRepository(ManifestationEntity::class)
             ->findAllLimit(10);
 
-        $data = array();
-        foreach ($events as $event) {
-            /** @var ManifestationEntity $event */
-            $result = $this->getDoctrine()
-                ->getRepository(PhotoEntity::class)
-                ->findOneBy(['id' => $event->getIDphoto()]);
-            array_push($data, [$event, 'pathPhoto' => $result->getPath()]);
-        }
-
         return $this->render('Events/event.html.twig', [
-            'events' => $data,
+            'events' => $events
         ]);
     }
 
@@ -165,6 +201,17 @@ class EventController extends Controller
     private function generateUniqueFileName()
     {
         return md5(uniqid());
+    }
+
+    private function getInscrits($eventName)
+    {
+        $event = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findOneBy(array('titre' => $eventName));
+
+        return $this->getDoctrine()
+            ->getRepository(InscritManifestationEntity::class)
+            ->findBy(array('IDManifestation' => $event->getId()));
     }
 
 }
