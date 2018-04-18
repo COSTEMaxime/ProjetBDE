@@ -1,20 +1,56 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/EventController.php</code></li>
-        <li>Your template at <code>templates/event/index.html.twig</code></li>
+{% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="active">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="">
+            <a href="/shop">Boutique</a>
+        </li>
     </ul>
-</div>
+{% endblock %}
+{% block body %}
+    <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un évènement</button>
+
+    <figure class="snip1423">
+        <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
+        <figcaption>
+            <h3><b>Compétition de Counter Strike</b></h3>
+            <div class="price">
+                24/10/2018
+                <div class="offer text-info">
+                    <span class="number">39</span>
+                    <span class="cents"><sup>95</sup></span>
+                    <span class="usd"><sup>€</sup></span>
+                </div>
+                <button type="button" class="btn btn-primary">Détails</button>
+            </div>
+        </figcaption><i class="ion-android-cart">+</i>
+        <a href="/events/exemple"></a>
+    </figure>
+
+        <figure class="snip1423">
+            <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
+            <figcaption>
+                <h3><b>Compétition de Counter Strike</b></h3>
+                <div class="price">
+                    24/10/2018
+                    <div class="offer text-info">
+                        <span class="number">39</span>
+                        <span class="cents"><sup>95</sup></span>
+                        <span class="usd"><sup>€</sup></span>
+                    </div>
+                    <button type="button" class="btn btn-primary">Détails</button>
+                </div>
+            </figcaption><i class="ion-android-cart">+</i>
+            <a href="/events/exemple"></a>
+        </figure>
 {% endblock %}

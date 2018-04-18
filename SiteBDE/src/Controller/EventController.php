@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class EventController extends Controller
 {
     /**
-     * @Route("/events", name="event")
+     * @Route("/events", name="events")
      */
     public function index()
     {
@@ -61,9 +62,9 @@ class EventController extends Controller
         $task = new AddEventForm();
         $form = $this->createFormBuilder($task)
             ->add('titre', TextType::class)
-            ->add('description', TextType::class)
-            ->add('image', FileType::class)
-            ->add('date', DateType::class, [
+            ->add('description', TextareaType::class)
+            ->add('image', FileType::class, array('label' => 'Image','attr'=> array('name'=>'img','onchange'=>"readURL(this)")))
+            ->add('date', DateType::class,array('label' => 'Image','attr'=> array('id'=>'datepicker')), [
                 'widget' => 'single_text'
             ])
             ->add('recurrence', ChoiceType::class, [
@@ -75,7 +76,7 @@ class EventController extends Controller
                 ]
             ])
             ->add('price', IntegerType::class)
-            ->add('submit', SubmitType::class, array('label' => 'Submit'))
+            ->add('submit', SubmitType::class, array('label' => "Créer l'évènement",'attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);
