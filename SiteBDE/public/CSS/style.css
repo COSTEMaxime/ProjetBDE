@@ -605,8 +605,3 @@ p {
 }
 
 /* Radio buttons */
-.fieldgroup{
-    float: left;
-    width: auto;
-    margin-left: 3em;
-}
