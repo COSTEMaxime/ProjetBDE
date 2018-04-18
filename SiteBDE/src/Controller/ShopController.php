@@ -105,14 +105,6 @@ class ShopController extends Controller
     }
 
     /**
-     * @Route("/shop/admin", name="manageShop")
-     */
-    public function manage(Request $request)
-    {
-        return $this->render('/Shop/gestion.html.twig');
-    }
-
-    /**
      * @Route("/product/new", name="newProduct", methods={"POST"})
      */
     public function new(Request $request)
