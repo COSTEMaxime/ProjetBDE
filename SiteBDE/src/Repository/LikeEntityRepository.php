@@ -46,5 +46,23 @@ class LikeEntityRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    public function getNbLikes($id)
+    {
+        try {
+            return $this->createQueryBuilder('l')
+                ->select('COUNT(l)')
+                ->where('l.ID_commentaire = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
+        catch(NonUniqueResultException $exception)
+        {
+            echo $exception;
+        }
+
+        return 0;
+    }
     */
 }
