@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -18,6 +19,8 @@ class LoginController extends Controller
      */
     public function index(Request $request)
     {
+        $session = new Session();
+
         $task = new LoginForm();
         $form = $this->createFormBuilder($task)
             ->add('login', TextType::class)
@@ -34,20 +37,22 @@ class LoginController extends Controller
             $login      =   $task->getLogin();
             $password   =   $task->getPassword();
 
-            if($this->isLoginCorrect($login, $password))
+            $user = $this->isLoginCorrect($login, $password);
+            if($user !== null)
             {
-                $_SESSION['connected'] = true;
-                $_SESSION['status'] = $this->getStatus($login);
+                $session->set('logged', true);
+                $session->set('userInfo', $user);
             }
             else
             {
-                $_SESSION['connected'] = false;
-                $_SESSION['wrongPassword'] = true;
+                $session->set('logged', false);
+                $session->set('wrongLongin', true);
             }
             return $this->redirectToRoute('homepage');
         }
         return $this->render('login/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'session' => $session
         ]);
     }
 
@@ -63,15 +68,4 @@ class LoginController extends Controller
             ]);
         return $result;
     }
-
-    function getStatus($login)
-    {
-        $result = $this->getDoctrine()
-            ->getRepository(UserEntity::class)
-            ->find($login);
-
-        return $result->getIDStatus();
-    }
-
-
 }

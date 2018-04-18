@@ -5,6 +5,9 @@
         <p data-aos="fade-left" data-aos-duration="1800" data-aos-once="true">Bienvenue sur notre site officiel</p>
         <p><img src="/Images/Logo_BDE.png" alt=""></p>
     {% if app.debug %}
-            <p>Session: {{ dump(app.session) }}</p>
+            <p>Session: {{ session }}</p>
     {% endif %}
+
+    {{ dump(session) }}
+
 {% endblock %}

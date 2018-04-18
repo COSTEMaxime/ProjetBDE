@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,6 +19,9 @@ class RegisterController extends Controller
      */
     public function index(Request $request)
     {
+        $session = new Session();
+        $session->set('logged', false);
+
         $task = new RegisterForm();
         $form = $this->createFormBuilder($task)
             ->add('firstName', TextType::class)
