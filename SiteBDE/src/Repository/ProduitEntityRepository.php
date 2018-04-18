@@ -14,6 +14,11 @@ class ProduitEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, ProduitEntity::class);
     }
 
+    public function findMostOrdered($limit)
+    {
+        return $this->findBy(array(), array('nbDeFois' => 'ASC'), $limit, null);
+    }
+
     public function findAllWithCriteria($category, $maxPrice, $research)
     {
         return $this->createQueryBuilder('p')

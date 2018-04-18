@@ -5,7 +5,7 @@ namespace App\Form;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-class ShopSearchForm
+class ShopResearchForm
 {
     protected $category;
     protected $maxPrice;

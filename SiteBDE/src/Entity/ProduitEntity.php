@@ -41,6 +41,21 @@ class ProduitEntity
      */
     private $nbDeFois;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idPhoto;
+
+    public function getIdPhoto()
+    {
+        return $this->idPhoto;
+    }
+
+    public function setIdPhoto($idPhoto): void
+    {
+        $this->idPhoto = $idPhoto;
+    }
+
     public function getId()
     {
         return $this->id;

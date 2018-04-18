@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\CategoryFormEntity;
+use App\Entity\PhotoEntity;
 use App\Entity\ProduitEntity;
 use App\Entity\TypeEntity;
-use App\Form\ShopSearchForm;
+use App\Form\ShopResearchForm;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,8 +22,30 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+        $articles = $this->getDoctrine()
+            ->getRepository(ProduitEntity::class)
+            ->findMostOrdered(3);
 
-        $task = new ShopSearchForm();
+        $data = array();
+        foreach ($articles as $article) {
+            /** @var ProduitEntity $article */
+            $result = $this->getDoctrine()
+                ->getRepository(PhotoEntity::class)
+                ->findOneBy(['id' => $article->getIdPhoto()]);
+            array_push($data, [$articles, 'pathPhoto' => $result->getPath()]);
+        }
+
+        return $this->render('Shop/shop.html.twig', [
+            'articles' => $data
+        ]);
+    }
+
+    /**
+     * @Route("/shop/research", name="shopResearch")
+     */
+    public function shopResearch(Request $request)
+    {
+        $task = new ShopResearchForm();
         $form = $this->createFormBuilder($task)
             ->add('category', ChoiceType::class, [
                 'choices' => $this->generateChoices(),
@@ -62,30 +85,15 @@ class ShopController extends Controller
                 ->getRepository(ProduitEntity::class)
                 ->findAllWithCriteria($category, $maxPrice, $research);
 
-            return $this->render('Shop/shop.html.twig', [
+            return $this->render('Shop/search.html.twig', [
                 'form' => $form->createView(),
                 'result' => $result
             ]);
         }
 
-        return $this->render('/Shop/shop.html.twig', [
+        return $this->render('/Shop/search.html.twig', [
             'form' => $form->createView()
         ]);
-    }
-
-    function generateChoices()
-    {
-        $result = $this->getDoctrine()
-            ->getRepository(TypeEntity::class)
-            ->findAll();
-
-        $data = array();
-
-        foreach ($result as $test)  {
-            array_push($data, new CategoryFormEntity($test->getName()));
-        }
-
-        return $data;
     }
 
     /**
@@ -102,5 +110,52 @@ class ShopController extends Controller
     public function manage(Request $request)
     {
         return $this->render('/Shop/gestion.html.twig');
+    }
+
+    /**
+     * @Route("/product/new", name="newProduct", methods={"POST"})
+     */
+    public function new(Request $request)
+    {
+
+    }
+
+    /**
+     * @Route("/product/{id}", name="uniqueArticle", methods={"GET"})
+     */
+    public function show(ProduitEntity $produitEntity)
+    {
+
+    }
+
+    /**
+     * Route("/article/{id}/edit", name="editArticle", methods={"GET|POST"})
+     */
+    public function edit(Request $request, ProduitEntity $produitEntity)
+    {
+
+    }
+
+    /**
+     * @Route("/articles/{id}", name="deleteArticle", methods={"DELETE"})
+     */
+    public function delete(Request $request, ProduitEntity $produitEntity)
+    {
+
+    }
+
+    function generateChoices()
+    {
+        $result = $this->getDoctrine()
+            ->getRepository(TypeEntity::class)
+            ->findAll();
+
+        $data = array();
+
+        foreach ($result as $test)  {
+            array_push($data, new CategoryFormEntity($test->getName()));
+        }
+
+        return $data;
     }
 }

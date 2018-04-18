@@ -8,14 +8,14 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180418083507 extends AbstractMigration
+class Version20180418141134 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE photo_entity DROP id_like, DROP idphoto');
+        $this->addSql('ALTER TABLE produit_entity ADD id_photo INT NOT NULL');
     }
 
     public function down(Schema $schema)
@@ -23,6 +23,6 @@ class Version20180418083507 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE photo_entity ADD id_like INT NOT NULL, ADD idphoto INT NOT NULL');
+        $this->addSql('ALTER TABLE produit_entity DROP id_photo');
     }
 }
