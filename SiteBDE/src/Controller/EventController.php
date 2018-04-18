@@ -20,6 +20,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class EventController extends Controller
 {
     /**
+     *  @Route("/events/{slug}", name="event")
+     */
+    public function event()
+    {
+        return $this->render('Events/event.html.twig');
+    }
+
+    /**
      * @Route("/events", name="events")
      */
     public function index()
@@ -137,4 +145,5 @@ class EventController extends Controller
     {
         return md5(uniqid());
     }
+
 }
