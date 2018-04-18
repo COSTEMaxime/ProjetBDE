@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -22,6 +23,8 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
+        $session = new Session();
+
         $articles = $this->getDoctrine()
             ->getRepository(ProduitEntity::class)
             ->findMostOrdered(3);
@@ -45,6 +48,8 @@ class ShopController extends Controller
      */
     public function shopResearch(Request $request)
     {
+        $session = new Session();
+
         $task = new ShopResearchForm();
         $form = $this->createFormBuilder($task)
             ->add('category', ChoiceType::class, [
@@ -101,6 +106,8 @@ class ShopController extends Controller
      */
     public function cart(Request $request)
     {
+        $session = new Session();
+
         return $this->render('/Shop/cart.html.twig');
     }
 

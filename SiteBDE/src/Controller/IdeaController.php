@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -25,6 +26,8 @@ class IdeaController extends Controller
      */
     public function index()
     {
+        $session = new Session();
+
         //Get 10 lasts ideas
         $ideas = $this->getDoctrine()
             ->getRepository(ActiviteEntity::class)
@@ -49,6 +52,8 @@ class IdeaController extends Controller
          */
     public function addIdea(Request $request)
     {
+        $session = new Session();
+
         $task = new AddIdeaForm();
         $form = $this->createFormBuilder($task)
             ->add('titre', TextType::class)
@@ -113,6 +118,7 @@ class IdeaController extends Controller
      */
     public function transformIdea()
     {
+        $session = new Session();
 
     }
 

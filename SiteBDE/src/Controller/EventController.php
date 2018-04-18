@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -24,6 +25,7 @@ class EventController extends Controller
      */
     public function event()
     {
+        $session = new Session();
         return $this->render('Events/event.html.twig');
     }
 
@@ -32,6 +34,7 @@ class EventController extends Controller
      */
     public function index()
     {
+        $session = new Session();
         /*
         //Get comments where parent is idea
         $comments = $this->getDoctrine()
@@ -66,6 +69,7 @@ class EventController extends Controller
      */
     public function addEvent(Request $request)
     {
+        $session = new Session();
 
         $task = new AddEventForm();
         $form = $this->createFormBuilder($task)
@@ -138,7 +142,6 @@ class EventController extends Controller
         return $this->render('Events/event_add.html.twig', [
             'form' => $form->createView()
         ]);
-
     }
 
     private function generateUniqueFileName()
