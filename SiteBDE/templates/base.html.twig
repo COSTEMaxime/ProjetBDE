@@ -66,12 +66,10 @@
                     </li>
                 </ul>
                 {% endblock %}
-                <!-- Supprimer un $SESSION-->
-                {{ app.session.get('registred') }}
-                {% if app.session.get('registred') is not defined %} <!--Isset, app sert à accéder aux globales-->
+                {% if app.session.get('logged') is not null %}
                     <ul class="nav navbar-nav navbar-right"> <!-- Position Left / Right-->
                         <li>
-                            <a href="{{ path('login') }}">{{ app.session.get('registred') }}</a>
+                            <a href="{{ path('disconnect') }}">Déconnexion</a>
                         </li>
                     </ul>
                 {% else %}

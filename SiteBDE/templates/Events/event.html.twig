@@ -50,13 +50,17 @@
                 </div>
                 <div class="panel-footer">
                     <div class="coupon-code">
+                        {% if app.session.get('logged') is not null %}
                         N'attendez plus :
+                        {% else %}
+                        Vous devez être inscrit pour intéragir avec les évènements
+                        {% endif %}
                         <span class="print">
+                            {% if app.session.get('logged') is not null %}
                                     <li class="dropdown">
                                         <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Poster une photo<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li>
-
                                                 <div class="col-md-20">
                                                     <b>Ajoutez une photo : </b>
                                                     <form class="form" role="form" method="post" action="login" accept-charset="UTF-8"
@@ -77,7 +81,8 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </li>
+                                        </li>
+
                                     <li class="dropdown">
                                         <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Liste inscrit<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
@@ -89,11 +94,14 @@
                                             </li>
                                         </ul>
                                     </li>
+
                     </span>
                     </div>
                     <div class="exp">
                         <a href="#"> Je m'inscris </a>
                     </div>
+                    {% endif %}
+
 
                 </div>
 
@@ -127,29 +135,19 @@
                                     sapiente modi tempora at perspiciatis mollitia, dolores voluptate. Cumque, corrupti?</p2>
                                 <div class="bottom-comment">
                                     <div class="comment-date">Aug 24, 2014 @ 2:35 PM</div>
+                                    {% if app.session.get('logged') is not null %}
                                     <ul class="comment-actions">
                                         <a href="#" class="btn btn-link"><i class="fa fa-lg fa-thumbs-o-up"></i></a>
                                     </ul>
+                                    {% endif %}
                                 </div>
                             </div>
+                            {% if app.session.get('logged') is not null %}
                             <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
                             <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                            {% endif %}
                         </div>
-
-                        <b>Cowboy Bebop : </b>
-                        <div class="comment-wrap">
-                            <div class="comment-block">
-                                <p2 class="comment-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto temporibus iste nostrum dolorem natus recusandae incidunt voluptatum. Eligendi voluptatum ducimus architecto tempore, quaerat explicabo veniam fuga corporis totam.</p2>
-                                <div class="bottom-comment">
-                                    <div class="comment-date">Aug 23, 2014 @ 10:32 AM</div>
-                                    <ul class="comment-actions">
-                                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-thumbs-o-up"></i></a>
-                                    </ul>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
-                        </div>
+                        {% if app.session.get('logged') is not null %}
                         <div class="comment-wrap">
                             <div class="comment-block">
                                 <form action="">
@@ -159,15 +157,18 @@
                         </div>
                         <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Répondre </button>
                     </div>
+                    {% endif %}
                 </div>
                 <div class="panel-footer">
                     <div class="coupon-code">
                         Nombre de <i class="fa fa-lg fa-thumbs-o-up"></i> total :
+                        {% if app.session.get('logged') is not null %}
                         <span class="print">
-                        <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
+                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
                             <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
                             <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
-                    </span>
+                        </span>
+                        {% endif %}
                     </div>
                     <div class="exp"> 23 </div>
                 </div>

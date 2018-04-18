@@ -18,9 +18,10 @@
     </ul>
     {% endblock %}
 {% block body %}
-
+{% if app.session.get('logged') is not null %}
    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='/shop/cart'">Panier</button>
    <button type="button" class="btn btn-warning top-corner-shop" onclick="window.location.href='/shop/admin'">Gestion Boutique</button>
+{% endif %}
     <!-- Menu de recherche -->
  <p>TOP 3 PRODUITS DE NOTRE BOUTIQUE</p>
     <div class="container">
@@ -42,7 +43,11 @@
                                         <br/>
                                         <b> {{ articles[i][0][i].prix }} €</b>
                                         <br/>
+                                        {% if app.session.get('logged') is not null %}
                                         <button type="button" class="btn btn-success center">Ajouter Panier</button>
+                                        {% else %}
+                                        <i>Vous devez être connecté pour acheter</i>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </li>
