@@ -25,14 +25,23 @@ class IdeaController extends Controller
             ->getRepository(ActiviteEntity::class)
             ->findAllLimit(10);
 
+        $data = array();
+        foreach ($ideas as $idea) {
+            /** @var ActiviteEntity $idea */
+            $result = $this->getDoctrine()
+                ->getRepository(PhotoEntity::class)
+                ->findOneBy(['id' => $idea->getIDphoto()]);
+            array_push($data, [$idea, 'pathPhoto' => $result->getPath()]);
+        }
+
         return $this->render('idea/index.html.twig', [
-            'ideas' => $ideas
+            'ideas' => $data,
         ]);
     }
 
-    /**
-     * @Route("/ideas/add", name="addIdea")
-     */
+        /**
+         * @Route("/ideas/add", name="addIdea")
+         */
     public function addIdea(Request $request)
     {
         $task = new AddIdeaForm();
