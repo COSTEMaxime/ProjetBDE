@@ -26,15 +26,7 @@ class EventController extends Controller
     public function event()
     {
         $session = new Session();
-        return $this->render('Events/event.html.twig');
-    }
 
-    /**
-     * @Route("/events", name="events")
-     */
-    public function index()
-    {
-        $session = new Session();
         /*
         //Get comments where parent is idea
         $comments = $this->getDoctrine()
@@ -45,22 +37,48 @@ class EventController extends Controller
         $commentsLikes = array();
         foreach ($comments as $comment) {
             /** @var CommentEntity $comment */
-            /**array_push($commentsLikes, [
-                $comment->getId() => $this->getDoctrine()
-                    ->getRepository(CommentLikeEntity::class)
-                    ->getNbLikes($comment->getId())
-            ]);
+        /**array_push($commentsLikes, [
+        $comment->getId() => $this->getDoctrine()
+        ->getRepository(CommentLikeEntity::class)
+        ->getNbLikes($comment->getId())
+        ]);
         }
 
-                      //Get ideas' id
-            $ideasId = array();
-            foreach ($ideas as $idea) {
-            /** @var ActiviteEntity $idea */
+        //Get ideas' id
+        $ideasId = array();
+        foreach ($ideas as $idea) {
+        /** @var ActiviteEntity $idea */
         /*array_push($ideasId, $idea->getId());
     }*/
 
         return $this->render('event/index.html.twig', [
-            'controller_name' => 'EventController',
+
+        ]);
+    }
+
+    /**
+     * @Route("/events", name="events")
+     */
+    public function index()
+    {
+        $session = new Session();
+
+        //Get 10 lasts events
+        $events = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findAllLimit(10);
+
+        $data = array();
+        foreach ($events as $event) {
+            /** @var ManifestationEntity $event */
+            $result = $this->getDoctrine()
+                ->getRepository(PhotoEntity::class)
+                ->findOneBy(['id' => $event->getIDphoto()]);
+            array_push($data, [$event, 'pathPhoto' => $result->getPath()]);
+        }
+
+        return $this->render('Events/event.html.twig', [
+            'events' => $data,
         ]);
     }
 
