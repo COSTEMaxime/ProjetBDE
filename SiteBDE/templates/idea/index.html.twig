@@ -19,8 +19,9 @@
     {% endblock %}
 
 {% block body %}
-<button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer un évènement</button>
-
+{% if app.session.get('logged') is not null %}
+    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer un évènement</button>
+{% endif %}
 {% for data in ideas%}
 
 {% set nblike = data.0.nbLike  - data.0.nbDislike %}
@@ -30,13 +31,16 @@
             <h3>{{ data.0.titre }}</h3>
             <p4>{{ data.0.contenu }}</p4>
             <br/>
+            {% if app.session.get('logged') is not null %}
             <button type="button" class="btn btn-success" onclick="window.location.href='{{ path('likeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-up"></span>
             </button>
+
             <button type="button" class="btn btn-danger" onclick="window.location.href='{{ path('dislikeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-down"></span>
             </button>
             <button type="button" class="btn btn-warning" onclick="window.location.href='{{ path('transformIdea') }}'">Transformer</button>
+            {% endif %}
             <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b>{{ nblike }}</b>
     </figure>
 {% endfor %}

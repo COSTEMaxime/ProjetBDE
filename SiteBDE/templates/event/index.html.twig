@@ -18,8 +18,9 @@
     </ul>
 {% endblock %}
 {% block body %}
+    {% if app.session.get('logged') is not null %}
     <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un évènement</button>
-
+{% endif %}
     <figure class="snip1423">
         <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
         <figcaption>
@@ -31,26 +32,11 @@
                     <span class="cents"><sup>95</sup></span>
                     <span class="usd"><sup>€</sup></span>
                 </div>
-                <button type="button" class="btn btn-primary">Détails</button>
             </div>
-        </figcaption><i class="ion-android-cart">+</i>
+        </figcaption><i class="ion-android-cart">+
+
         <a href="/events/exemple"></a>
+
     </figure>
 
-        <figure class="snip1423">
-            <img src="https://i.pinimg.com/originals/be/a7/bc/bea7bc1e4dd7ac8f0617c7a4eb036db5.jpg" alt="sample57" />
-            <figcaption>
-                <h3><b>Compétition de Counter Strike</b></h3>
-                <div class="price">
-                    24/10/2018
-                    <div class="offer text-info">
-                        <span class="number">39</span>
-                        <span class="cents"><sup>95</sup></span>
-                        <span class="usd"><sup>€</sup></span>
-                    </div>
-                    <button type="button" class="btn btn-primary">Détails</button>
-                </div>
-            </figcaption><i class="ion-android-cart">+</i>
-            <a href="/events/exemple"></a>
-        </figure>
 {% endblock %}

@@ -18,6 +18,7 @@
     </ul>
     {% endblock %}
 {% block body %}
+{% if app.session.get('logged') is not null %}
     <p>Boîte à idéees</p>
     {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
     <div id="login-overlay" class="modal-dialog">
@@ -51,4 +52,5 @@
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
