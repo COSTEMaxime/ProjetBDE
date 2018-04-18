@@ -1,23 +1,54 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello !{% endblock %}
-
+{% extends "base.html.twig" %}
+{% block navbar %}
+<!-- Menu -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+        <li class="">
+            <a href="/" >Accueil</a>
+        </li>
+        <li class="active">
+            <a href="/ideas">Boîte à idée</a>
+        </li>
+        <li class="">
+            <a href="/events">Evènements</a>
+        </li>
+        <li class="">
+            <a href="/shop">Boutique</a>
+        </li>
+    </ul>
+    {% endblock %}
 {% block body %}
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-    <div class="example-wrapper">
-
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code>src/Controller/IdeaController.php</code></li>
-            <li>Your template at <code>templates/idea/index.html.twig</code></li>
-        </ul>
+    <p>Boîte à idéees</p>
+    {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
+    <div id="login-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-xs-15">
+                    <div class="well">
+                        {{ form_start(form) }}
+                                {{ form_errors(form) }}
+                            <div class="form-group">
+                                    {{ form_label(form.titre) }} <!-- Label name -->
+                                    {{ form_widget(form.titre) }} <!-- Erreurs de validation -->
+                                    {{ form_row(form.titre) }} <!-- Affiche la row -->
+                            </div>
+                            <div class="form-group">
+                                    {{ form_label(form.description) }} <!-- Label name -->
+                                    {{ form_widget(form.description) }} <!-- Erreurs de validation -->
+                                    {{ form_row(form.description) }} <!-- Affiche la row -->
+                            </div>
+                            <div class="container">
+                                <img id="blah" src="http://placehold.it/180" alt="your image" />
+                                    {{ form_label(form.image) }} <!-- Label name -->
+                                    {{ form_widget(form.image) }} <!-- Erreurs de validation -->
+                                    {{ form_row(form.image) }} <!-- Affiche la row -->
+                            </div>
+                            <!-- Boutton -->
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

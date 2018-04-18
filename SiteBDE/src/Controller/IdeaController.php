@@ -8,6 +8,7 @@ use App\Form\AddIdeaForm;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,9 +48,10 @@ class IdeaController extends Controller
         $task = new AddIdeaForm();
         $form = $this->createFormBuilder($task)
             ->add('titre', TextType::class)
-            ->add('description', TextType::class)
-            ->add('image', FileType::class)
-            ->add('submit', SubmitType::class, array('label' => 'Submit'))
+            ->add('description', TextareaType::class)
+            ->add('image', FileType::class, array('label' => 'Image','attr'=> array('name'=>'img','onchange'=>"readURL(this)")))
+            ->add('submit', SubmitType::class, array('label' => 'Proposer mon idée','attr'=> array('class'=>'btn btn-primary')))
+
             ->getForm();
 
         $form->handleRequest($request);
