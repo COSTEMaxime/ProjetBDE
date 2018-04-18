@@ -603,3 +603,10 @@ p {
 .comment-actions li:hover {
     color: #0095ff;
 }
+
+/* Radio buttons */
+.fieldgroup{
+    float: left;
+    width: auto;
+    margin-left: 3em;
+}

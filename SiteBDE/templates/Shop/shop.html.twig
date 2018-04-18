@@ -19,53 +19,41 @@
     {% endblock %}
 {% block body %}
 
-    <h1>Hello {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-        ! ✅</h1>
-
-
    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='/shop/cart'">Panier</button>
    <button type="button" class="btn btn-warning top-corner-shop" onclick="window.location.href='/shop/admin'">Gestion Boutique</button>
     <!-- Menu de recherche -->
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">
-
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Catégories</span> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#contains">Chaussures</a></li>
-                            <li><a href="#its_equal">Coussin</a></li>
-                            <li><a href="#greather_than">Chemise</a></li>
-                            <li><a href="#less_than">Veste</a></li>
-                        </ul>
+    {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
+    <div id="login-overlay" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            <b> Rechercher un produit </b>
+                <div class="col-xs-15">
+                    <div class="well">
+                        {{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+                        {{ form_errors(form) }}
+                        <div class="form-check">
+                        <b>Cochez vos catégories :</b>
+                            {{ form_errors(form.category) }}
+                            {{ form_widget(form.category, {'attr': {'class': ''}}) }}
+                        </div>
+                        <div class="form-group">
+                        <b>Prix Max :</b>
+                            {{ form_errors(form.maxPrice) }}
+                            {{ form_widget(form.maxPrice) }}
+                        </div>
+                        <div class="form-group">
+                        <b>Recherchez :</b>
+                            {{ form_errors(form.research) }}
+                            {{ form_widget(form.research) }}
+                        </div>
+                        <!-- Boutton -->
+                        {{ form_end(form) }}
+                        </form>
                     </div>
-                    <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <span id="search_concept2">Prix</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu2">
-                        <li><a href="#contains">10 - 20 €</a></li>
-                        <li><a href="#its_equal">20 - 30 €</a></li>
-                        <li><a href="#greather_than">40 - 50 €</a></li>
-                        <li><a href="#less_than">50 - 60 €</a></li>
-                    </ul>
-                    </div>
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Rechercher le produit">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                        <br/>
-                </span>
                 </div>
             </div>
         </div>
     </div>
-    <br/>
 
     <div class="container">
         <div class="col-xs-12">

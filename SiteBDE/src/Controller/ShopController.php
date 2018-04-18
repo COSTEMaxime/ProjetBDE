@@ -40,7 +40,7 @@ class ShopController extends Controller
             ->add('research', TextType::class, [
                 'required' => false
             ])
-            ->add('submit', SubmitType::class, array('label' => 'Submit'))
+            ->add('submit', SubmitType::class, array('label' => 'Rechercher','attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);
