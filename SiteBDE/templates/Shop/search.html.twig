@@ -53,7 +53,9 @@
             </div>
         </div>
     </div>
-
+    {% if result is defined %}
+        {{ dump(result) }}
+    {% endif %}
     {% if app.session.get('logged') is not null %}
     <!-- Affichage de la recherche -->
     {% endif %}
