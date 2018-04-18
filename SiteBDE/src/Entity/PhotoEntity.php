@@ -34,17 +34,8 @@ class PhotoEntity
     /**
      * @ORM\Column(type="integer")
      */
-    private $ID_like;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $IDuser;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $IDphoto;
 
     public function getId()
     {
@@ -87,18 +78,6 @@ class PhotoEntity
         return $this;
     }
 
-    public function getIDLike(): ?int
-    {
-        return $this->ID_like;
-    }
-
-    public function setIDLike(int $ID_like): self
-    {
-        $this->ID_like = $ID_like;
-
-        return $this;
-    }
-
     public function getIDuser(): ?int
     {
         return $this->IDuser;
@@ -107,18 +86,6 @@ class PhotoEntity
     public function setIDuser(int $IDuser): self
     {
         $this->IDuser = $IDuser;
-
-        return $this;
-    }
-
-    public function getIDphoto(): ?int
-    {
-        return $this->IDphoto;
-    }
-
-    public function setIDphoto(int $IDphoto): self
-    {
-        $this->IDphoto = $IDphoto;
 
         return $this;
     }

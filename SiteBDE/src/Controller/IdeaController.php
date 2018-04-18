@@ -54,7 +54,7 @@ class IdeaController extends Controller
             /** @var File $file */
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             $file->move(
-                $this->getParameter('images'),
+                'images/',
                 $fileName
             );
 
@@ -64,27 +64,31 @@ class IdeaController extends Controller
             $image->setIsFlagged(false);
             $image->setNblike(0);
             $image->setPath($fileName);
+            $image->setIDuser(-1);
             //TODO
             //$image->setIDuser(getCurrentUserID());
 
             $manager->persist($image);
+            $manager->flush();
 
             //Add the idea
             $idea = new ActiviteEntity();
             $idea->setTitre($data->getTitre());
-            $idea->setContenu($data->getDscription());
+            $idea->setContenu($data->getDescription());
+            $idea->setIDphoto($this->getLastImageID());
             $idea->setNbLike(0);
             $idea->setNbDislike(0);
+            $idea->setIDuser(-1);
             //TODO
             //$idea->setIDuser(getCurrentUser());
 
             $manager->persist($idea);
             $manager->flush();
 
-            $this->redirectToRoute('/ideas');
+            return $this->redirectToRoute('ideas');
         }
 
-        return $this->render('Events/event.html.twig', [
+        return $this->render('idea/idea_add.html.twig', [
             'form' =>$form->createView()
         ]);
     }
@@ -116,5 +120,15 @@ class IdeaController extends Controller
     private function generateUniqueFileName()
     {
         return md5(uniqid());
+    }
+
+    private function getLastImageID()
+    {
+        $result = $this->getDoctrine()
+            ->getRepository(PhotoEntity::class)
+            ->findOneBy([], [
+                'id' => 'DESC'
+            ]);
+        return $result->getId();
     }
 }
