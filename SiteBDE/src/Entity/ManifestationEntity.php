@@ -114,12 +114,12 @@ class ManifestationEntity
         return $this;
     }
 
-    public function getDateManifestation(): ?string
+    public function getDateManifestation()
     {
         return $this->DateManifestation;
     }
 
-    public function setDateManifestation(string $DateManifestation): self
+    public function setDateManifestation($DateManifestation): self
     {
         $this->DateManifestation = $DateManifestation;
 

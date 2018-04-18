@@ -3,9 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\ActiviteEntity;
+use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
 use App\Form\AddIdeaForm;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\File\File;
@@ -63,7 +67,7 @@ class IdeaController extends Controller
             /** @var File $file */
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             $file->move(
-                'images/',
+                'Uploads/',
                 $fileName
             );
 

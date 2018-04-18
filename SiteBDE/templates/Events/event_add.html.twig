@@ -1,6 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
     <p>Ajouter un évènement</p>
     <div id="login-overlay" class="modal-dialog">
         <div class="modal-content">

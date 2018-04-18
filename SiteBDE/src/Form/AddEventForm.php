@@ -8,13 +8,13 @@ class AddEventForm extends AddIdeaForm
     protected $date;
     protected $recurrence;
     protected $price;
-    
+
     public function getDate()
     {
         return $this->date;
     }
 
-    public function setDate($date): void
+    public function setDate(\DateTime $date): void
     {
         $this->date = $date;
     }
