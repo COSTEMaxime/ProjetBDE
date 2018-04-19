@@ -53,10 +53,42 @@
             </div>
         </div>
     </div>
-    {% if result is defined %}
-        {{ dump(result) }}
+    {% if donnees is defined %}
+
+
+    <div class="container">
+        <div class="col-xs-12">
+            <div class="carousel slide" id="myCarousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                        {% for data in donnees %}
+                            <li class="col-sm-3">
+                                <div class="fff">
+                                    <div class="thumbnail">
+                                        <a href="#"><img src="../Uploads/{{ data.pathPhoto }}" alt="Photo" height="250" width="250"></a>
+                                    </div>
+                                    <div class="caption">
+                                        <h4>{{ data.0.nom }}</h4>
+                                        <p2>{{ data.0.description }} </p2>
+                                        <br/>
+                                        <b>{{ data.0.prix }} €</b>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div><!-- /Slide1 -->
+                </div><!-- /.control-box -->
+            </div><!-- /#myCarousel -->
+        </div><!-- /.col-xs-12 -->
+    </div><!-- /.container -->
     {% endif %}
-    {% if app.session.get('logged') is not null %}
-    <!-- Affichage de la recherche -->
-    {% endif %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="../../JS/add_Image.js"></script> <!-- place youre js file here -->
+    <script src="../../JS/bs-animation.js"></script> <!-- place youre js file here -->
+    <script src="../../JS/navbar.js"></script> <!-- place youre js file here -->
+    <script src="../../JS/shop.js"></script> <!-- place youre js file here -->
+{% endblock %}
 {% endblock %}
