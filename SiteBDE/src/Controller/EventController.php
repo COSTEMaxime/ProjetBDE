@@ -10,6 +10,7 @@ use App\Entity\PhotoEntity;
 use App\Form\AddEventForm;
 use App\Entity\CommentEntity;
 use App\PDFConverter;
+use App\Entity\ActiviteEntity;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -155,21 +156,23 @@ class EventController extends Controller
      */
     public function inscription($slug)
     {
-        $fileName = CONSTANTS::$DOWNLOADS_DIR.preg_replace('/\s+/', '_', $slug).'.csv';
+        $session = new Session();
 
-        try {
-            CSVConverter::generateFromData([
-                'data' => $this->getInscrits($slug),
-                'header' => $fileName
-            ]);
-        }
-        catch (\Exception $e)
-        {
-            echo $e->getMessage();
-            echo $e->getTraceAsString();
-        }
+        $manager = $this->getDoctrine()->getManager(); //Manager
 
-        return $this->file($fileName);
+        $activite = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findOneBy(array('titre' => $slug));
+
+        $insc = new InscritManifestationEntity();
+        $insc->setIDManifestation($activite->getId());
+        $insc->setIDuser($session->get('userInfo')->getId());
+
+        $manager->persist($insc);
+        //Envoyer data
+        $manager->flush();
+
+        return $this->redirectToRoute('event', array('slug' => $slug));
     }
 
     /**
@@ -223,16 +226,21 @@ class EventController extends Controller
     {
         $session = new Session();
 
-        $event = $this->getDoctrine()
+        $event = $this->getDoctrine() //Manifestation
             ->getRepository(ManifestationEntity::class)
             ->findOneBy(array('titre' => $slug));
+
+        $inscription = $this->getDoctrine() //Pour liste inscription
+            ->getRepository(InscritManifestationEntity::class)
+            ->findOneBy(array('IDManifestation' => $event->getId()));
+
 
 
         $photosAComment = $this->getDoctrine()
             ->getRepository(CommentEntity::class)
-            ->findBy(array('IdParent' => $event->getId() ));
+            ->findBy(array('IdParent' => $event->getId()));
 
-        $tabphotos = array();
+        $tabphotos = array(); //Liste des photos
         foreach ($photosAComment as $key) {
             $photos = $this->getDoctrine()
                 ->getRepository(PhotoEntity::class)
@@ -324,12 +332,23 @@ class EventController extends Controller
         /*array_push($ideasId, $idea->getId());
     }*/
 
+
+        //Pour empêcher de se réinscrire
+        if (isset($inscription)) {
+            if ($inscription->getIDUser() == $session->get('userInfo')->getId()) {
+                $inscription = 1; //déjà inscrit
+            }
+        }else{
+            $inscription = 0;
+        }
+
         return $this->render('Events/event.html.twig', [
             'form' => $form->createView(),
             'event' => $event,
             'slug' => $slug,
             'photosAComment' => $photosAComment,
-            'photo' => $tabphotos
+            'photo' => $tabphotos,
+            'inscription' => $inscription
         ]);
     }
 
@@ -345,6 +364,7 @@ class EventController extends Controller
         $events = $this->getDoctrine()
             ->getRepository(ManifestationEntity::class)
             ->findAllLimit(10);
+
 
 
         //$url = $this->generateUrl('event', array('slug' => 'monSlug'));
