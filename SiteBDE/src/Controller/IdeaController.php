@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\CONSTANTS;
 use App\Entity\ActiviteEntity;
+use App\Entity\LikeEntity;
 use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
 use App\Form\AddIdeaForm;
@@ -43,9 +44,16 @@ class IdeaController extends Controller
                 ->findOneBy(['id' => $idea->getIDphoto()]);
             array_push($data, [$idea, 'pathPhoto' => $result->getPath()]);
         }
+        //On va récupérer pour savoir si l'user a déjà like
+
+        $like = $this->getDoctrine()
+            ->getRepository(LikeEntity::class)
+            ->findBy(['IDUser' => $session->get('userInfo')->getId()]);
+
 
         return $this->render('idea/index.html.twig', [
             'ideas' => $data,
+            'like' => $like
         ]);
     }
 
@@ -212,19 +220,58 @@ class IdeaController extends Controller
     }
 
     /**
-     * @Route("/ideas/like", name="likeIdea")
+     * @Route("/ideas/like/{slug}", name="likeIdea")
      */
-    public function likeIdea()
+    public function likeIdea($slug)
     {
+        $session = new Session();
 
+        $manager = $this->getDoctrine()->getManager(); //Manager
+        $like = new LikeEntity();
+        $like->setIDActivite($slug);//Date du jour à mettre
+        $like->setIsLike(1);
+        $like->setIDUser($session->get('userInfo')->getId());
+        $like->setIsDisliked(0);
+        $manager->persist($like);
+
+        $activite = $this->getDoctrine()
+            ->getRepository(ActiviteEntity::class)
+            ->find($slug);
+        $activite->setnbLike($activite->getnbLike()+1);
+        $manager->persist($activite);
+
+         //Envoyer data
+        $manager->flush();
+
+        return $this->redirectToRoute('ideas');
     }
 
     /**
-     * @Route("/ideas/dislike", name="dislikeIdea")
+     * @Route("/ideas/dislike/{slug}", name="dislikeIdea")
      */
-    public function dislikeIdea()
+    public function dislikeIdea($slug)
     {
+        $session = new Session();
 
+        $manager = $this->getDoctrine()->getManager(); //Manager
+        $like = new LikeEntity();
+        $like->setIDActivite($slug);//Date du jour à mettre
+        $like->setIsLike(0);
+
+        $like->setIDUser($session->get('userInfo')->getId());
+        $like->setIsDisliked(1);
+        $manager->persist($like);
+
+        $activite = $this->getDoctrine()
+            ->getRepository(ActiviteEntity::class)
+            ->find($slug);
+        $activite->setnbDislike($activite->getnbDislike()+1);
+        $manager->persist($activite);
+
+        //Envoyer data
+        $manager->flush();
+
+        return $this->redirectToRoute('ideas');
     }
 
     private function generateUniqueFileName()
