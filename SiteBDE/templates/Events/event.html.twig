@@ -85,10 +85,10 @@
                                         <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Liste inscrit<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li class="">
-                                                 <a href="/events/{{ event.titre }}/toPDF"><i class="fa fa-lg fa-print"></i> Télécharger en CSV </a>
+                                                 <a href="{{ path('downloadEventPDF', {slug: slug}) }}"><i class="fa fa-lg fa-print"></i> Télécharger en CSV </a>
                                             </li>
                                             <li class="">
-                                                <a href="/events/{{ event.titre }}/toCSV"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
+                                                <a href="{{ path('downloadEventCSV', {slug: slug}) }}"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
                                             </li>
                                         </ul>
                                     </li>

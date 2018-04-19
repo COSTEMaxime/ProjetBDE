@@ -4,9 +4,6 @@ namespace App;
 
 
 use App\Entity\InscritManifestationEntity;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class CSVConverter
 {
