@@ -39,10 +39,11 @@
             <button type="button" class="btn btn-danger" onclick="window.location.href='{{ path('dislikeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-down"></span>
             </button>
-            <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/transform/{{ data.0.titre }}'">Transformer</button>
+            {% if app.session.get('userInfo').IDStatus == 2 %}
+                <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/transform/{{ data.0.titre }}'">Transformer</button>
+            {% endif %}
             {% endif %}
             <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b>{{ nblike }}</b>
     </figure>
 {% endfor %}
-
 {% endblock %}

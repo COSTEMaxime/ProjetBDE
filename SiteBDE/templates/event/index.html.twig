@@ -19,8 +19,10 @@
 {% endblock %}
 {% block body %}
     {% if app.session.get('logged') is not null %}
-    <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un évènement</button>
-{% endif %}
+        {% if app.session.get('userInfo').IDStatus == 2 %}
+            <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un évènement</button>
+        {% endif %}
+    {% endif %}
 {% for data in events%}
     <figure class="snip1423">
         <img src="Uploads/{{ data.image }}" alt="sample57" />
