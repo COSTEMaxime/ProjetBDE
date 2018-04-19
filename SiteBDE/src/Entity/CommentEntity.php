@@ -22,11 +22,6 @@ class CommentEntity
     private $dateComment;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $IDuser;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $IsFlagged;
@@ -46,31 +41,24 @@ class CommentEntity
      */
     private $IdPhoto;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $comment;
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function getDateComment(): ?string
+    public function getDateComment()
     {
         return $this->dateComment;
     }
 
-    public function setDateComment(string $dateComment): self
+    public function setDateComment($dateComment): self
     {
         $this->dateComment = $dateComment;
-
-        return $this;
-    }
-
-    public function getIDuser(): ?int
-    {
-        return $this->IDuser;
-    }
-
-    public function setIDuser(?int $IDuser): self
-    {
-        $this->IDuser = $IDuser;
 
         return $this;
     }
@@ -122,4 +110,22 @@ class CommentEntity
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * @param mixed $comment
+     */
+    public function setComment($comment): void
+    {
+        $this->comment = $comment;
+    }
+
+
 }

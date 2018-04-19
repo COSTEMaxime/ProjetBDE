@@ -18,7 +18,8 @@
     </ul>
     {% endblock %}
 {% block body %}
-{{ dump(event) }}
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
     <div class="row" id="lightblue">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-info coupon"> <!-- Panel est deprecated, il faudrait peut-être le mettre à jour Emilien ;) -->
@@ -60,22 +61,8 @@
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li>
                                                 <div class="col-md-20">
-                                                    <b>Ajoutez une photo : </b>
-                                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8"
-                                                          id="login-nav">
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <input type='file' onchange="readURL(this);" name = "img"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                             <label for="exampleFormControlTextarea1">Description</label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary btn-block">Ajouter Photo</button>
-                                                        </div>
-                                                    </form>
+                                                    {{ form_start(form) }} <!--MyForm -->
+                                                    {{ form_end(form) }}
                                                 </div>
                                             </li>
                                         </ul>
@@ -106,23 +93,25 @@
             </div>
         </div>
     </div>
-
-
-        <div class="row" id="yellow">
+        {% set compteur = 0 %}
+        {% for comments in photosAComment %}
+        <!-- Espace commentaire -->
+    <div class="row" id="yellow">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-warning coupon">
                     <div class="panel-heading" id="head">
                         <div class="panel-title" id="title">
                             <i class="fa fa-comments-o fa-2x"></i>
-                        <span class="hidden-xs">John - McGuard - 17/05/2018</span>
+                            {% set date = comments.dateComment.date|split(' ') %}
+                        <span class="hidden-xs">John - McGuard - {{ date[0] }}</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <img src="https://i1.wp.com/www.alwaysforkeyboard.com/wp-content/uploads/2017/02/counter_strike_go_7.jpg?fit=1920%2C1080&ssl=1" class="coupon-img img-rounded" >
+                    <img src="../Uploads/{{ photo[compteur][0].path }}" class="coupon-img img-rounded" alt="image" >
                     <div class="col-md-9">
                     </div>
                     <div class="col-md-12">
-                        <p3>Hey dudes, look at this ! Nice teamwork ;)</p3>
+                        <p3>{{ comments.comment }}</p3>
                     </div>
                     <div class="comments">
                         <b>John Lenon : </b>
@@ -174,4 +163,6 @@
             </div>
         </div>
     </div>
+{% set compteur = compteur + 1 %}
+{% endfor %}
 {% endblock %}
