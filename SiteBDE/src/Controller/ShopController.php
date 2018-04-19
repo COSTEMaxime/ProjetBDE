@@ -52,8 +52,22 @@ class ShopController extends Controller
     {
         $session = new Session();
 
+        //Data for autocomplete
+        $rawData = $this->getDoctrine()
+            ->getRepository(ProduitEntity::class)
+            ->findAll();
+
+        $nomsArticles = array();
+
+        foreach ($rawData as $temp) {
+            /** @var ProduitEntity $temp */
+            array_push($nomsArticles, $temp->getNom());
+        }
+
+        //Form
         $task = new ShopResearchForm();
         $form = $this->createFormBuilder($task)
+            ->setAttribute('autocomplete', 'off')
             ->add('category', ChoiceType::class, [
                 'choices' => $this->generateChoices(),
                 'choice_label' => function($category) {
@@ -101,16 +115,17 @@ class ShopController extends Controller
                     ->findOneBy(['id' => $idea->getIDphoto()]); //On récupère l'IDPhoto
                 array_push($data, [$idea, 'pathPhoto' => $result->getPath()]);
             }
-            //////////////////////////////
 
             return $this->render('Shop/search.html.twig', [
                 'form' => $form->createView(),
-                'donnees' => $data
+                'donnees' => $data,
+                'nomsArticles' => $nomsArticles
             ]);
         }
 
         return $this->render('/Shop/search.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'nomsArticles' => $nomsArticles
         ]);
     }
 
