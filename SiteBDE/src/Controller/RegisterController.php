@@ -48,25 +48,34 @@ class RegisterController extends Controller
 
             if (!$this->userExist($email))
             {
-                if ($password === $passwordConfirm)
+                if (preg_match('~[A-Z]~', $password) &&
+                    preg_match('~\d~', $password))
                 {
-                    $manager = $this->getDoctrine()->getManager();
+                    if ($password === $passwordConfirm)
+                    {
+                        $manager = $this->getDoctrine()->getManager();
 
-                    $user = new UserEntity();
-                    $user->setPrenom($firstName);
-                    $user->setNom($lastName);
-                    $user->setMail($email);
-                    $user->setMdp($password);
-                    $user->setIDStatus(0);
+                        $user = new UserEntity();
+                        $user->setPrenom($firstName);
+                        $user->setNom($lastName);
+                        $user->setMail($email);
+                        $user->setMdp($password);
+                        $user->setIDStatus(0);
 
-                    $manager->persist($user);
-                    $manager->flush();
+                        $manager->persist($user);
+                        $manager->flush();
 
-                    return $this->redirectToRoute('homepage');
+                        return $this->redirectToRoute('homepage');
+                    }
+                    else
+                    {
+                        $_SESSION['passwordsDoesNotMatch'] = true;
+                        return $this->redirectToRoute('register/index.html.twig');
+                    }
                 }
                 else
                 {
-                    $_SESSION['passwordsDoesNotMatch'] = true;
+                    $_SESSION['passwordNotConform'] = true;
                     return $this->redirectToRoute('register/index.html.twig');
                 }
             }
