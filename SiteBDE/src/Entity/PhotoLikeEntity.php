@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CommentLikeEntityRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\PhotoLikeEntityRepository")
  */
-class CommentLikeEntity
+class PhotoLikeEntity
 {
     /**
      * @ORM\Id()
@@ -24,14 +24,14 @@ class CommentLikeEntity
     /**
      * @ORM\Column(type="integer")
      */
-    private $ID_commentaire;
+    private $IDphoto;
 
 
     /**
-     * @ORM\OneToOne(targetEntity="CommentEntity")
-     * @ORM\JoinColumn(name="$comment_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="PhotoEntity")
+     * @ORM\JoinColumn(name="$photo_id", referencedColumnName="id")
      */
-    private $comment_id;
+    private $photo_id;
 
     /**
      * @ORM\OneToOne(targetEntity="UserEntity")
@@ -56,14 +56,14 @@ class CommentLikeEntity
         return $this;
     }
 
-    public function getIDCommentaire(): ?int
+    public function getIDphoto(): ?int
     {
-        return $this->ID_commentaire;
+        return $this->IDphoto;
     }
 
-    public function setIDCommentaire(int $ID_commentaire): self
+    public function setIDphoto(int $IDphoto): self
     {
-        $this->ID_commentaire = $ID_commentaire;
+        $this->IDphoto = $IDphoto;
 
         return $this;
     }

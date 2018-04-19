@@ -48,6 +48,38 @@ class UserEntity
 
     private $IDStatus;
 
+    /**
+     * @ORM\OneToMany(targetEntity="InscritManifestationEntity")
+     * @ORM\JoinColumn(name="$manifestation_id", referencedColumnName="id")
+     */
+    private $manifestation_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="StatusUserEntity")
+     * @ORM\JoinColumn(name="$status_id", referencedColumnName="id")
+     */
+    private $status_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CommentEntity")
+     * @ORM\JoinColumn(name="$comment_id", referencedColumnName="id")
+     */
+    private $comment_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CommentLikeEntity")
+     * @ORM\JoinColumn(name="$commentLike_id", referencedColumnName="id")
+     */
+    private $commentLike_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LikeEntity")
+     * @ORM\JoinColumn(name="$Like_id", referencedColumnName="id")
+     */
+    private $Like_id;
+
+
+
     public function getId()
     {
         return $this->id;

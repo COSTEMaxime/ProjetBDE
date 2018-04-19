@@ -36,6 +36,19 @@ class LikeEntity
      */
     private $isDisliked;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteEntity")
+     * @ORM\JoinColumn(name="$Activite_id", referencedColumnName="id")
+     */
+    private $activite_id;
+    /**
+     * @ORM\OneToOne(targetEntity="UserEntity")
+     * @ORM\JoinColumn(name="$User_id", referencedColumnName="id")
+     */
+    private $user_id;
+
+
     public function getId()
     {
         return $this->id;

@@ -46,6 +46,32 @@ class ActiviteEntity
      */
     private $nbDislike;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ManifestationEntity")
+     * @ORM\JoinColumn(name="$manifestaton_id", referencedColumnName="id")
+     */
+    private $manifestaton_id;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="CommentEntity")
+     * @ORM\JoinColumn(name="$comment_id", referencedColumnName="id")
+     */
+    private $comment_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PhotoEntity")
+     * @ORM\JoinColumn(name="$photo_id", referencedColumnName="id")
+     */
+    private $photo_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LikeEntity")
+     * @ORM\JoinColumn(name="$Like_id", referencedColumnName="id")
+     */
+    private $like_id;
+
+
     public function getId()
     {
         return $this->id;

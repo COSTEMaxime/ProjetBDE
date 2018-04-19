@@ -46,6 +46,24 @@ class CommentEntity
      */
     private $IdPhoto;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteEntity")
+     * @ORM\JoinColumn(name="$activite_id", referencedColumnName="id")
+     */
+    private $activite_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="UserEntity")
+     * @ORM\JoinColumn(name="$User_id", referencedColumnName="id")
+     */
+    private $user_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CommentLikeEntity")
+     * @ORM\JoinColumn(name="$commentaire_id", referencedColumnName="id")
+     */
+    private $commentlike_id;
+
     public function getId()
     {
         return $this->id;

@@ -16,6 +16,12 @@ class StatusUserEntity
      */
     private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="UserEntity")
+     * @ORM\JoinColumn(name="$status_id", referencedColumnName="id")
+     */
+    private $status_id;
+
     public function getId()
     {
         return $this->id;

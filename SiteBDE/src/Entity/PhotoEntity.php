@@ -46,6 +46,21 @@ class PhotoEntity
      */
     private $IDphoto;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="PhotoLikeEntity")
+     * @ORM\JoinColumn(name="$photoLike_id", referencedColumnName="id")
+     */
+    private $photoLike_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ActiviteEntity")
+     * @ORM\JoinColumn(name="$activite_id", referencedColumnName="id")
+     */
+    private $activite_id;
+
+
+
     public function getId()
     {
         return $this->id;
