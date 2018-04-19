@@ -20,7 +20,11 @@ class RegisterController extends Controller
     public function index(Request $request)
     {
         $session = new Session();
-        $session->set('logged', false);
+        $session->set('logged', null);
+        $session->set('userInfo', null);
+        $passwordsDoesNotMatch = 0;
+        $passwordNotConform = 0;
+        $emailAlreadyTaken = 0;
 
         $task = new RegisterForm();
         $form = $this->createFormBuilder($task)
@@ -61,33 +65,35 @@ class RegisterController extends Controller
                         $user->setMail($email);
                         $user->setMdp($password);
                         $user->setIDStatus(0);
-
+                        $session->set('userInfo', $user);
                         $manager->persist($user);
                         $manager->flush();
 
+
+                        $session->set('logged', true);
                         return $this->redirectToRoute('homepage');
                     }
                     else
                     {
-                        $_SESSION['passwordsDoesNotMatch'] = true;
-                        return $this->redirectToRoute('register/index.html.twig');
+                        $passwordsDoesNotMatch = 1;
                     }
                 }
                 else
                 {
-                    $_SESSION['passwordNotConform'] = true;
-                    return $this->redirectToRoute('register/index.html.twig');
+                    $passwordNotConform = 1;
                 }
             }
             else
             {
-                $_SESSION['emailAlreadyTaken'] = true;
-                return $this->redirectToRoute('/register/index.html.twig');
+                $emailAlreadyTaken = 1;
             }
         }
 
         return $this->render('register/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'passwordsDoesNotMatch' => $passwordsDoesNotMatch,
+            'passwordNotConform' => $passwordNotConform,
+            'emailAlreadyTaken' => $emailAlreadyTaken
         ]);
     }
 
@@ -96,6 +102,17 @@ class RegisterController extends Controller
         $result = $this->getDoctrine()
             ->getRepository(UserEntity::class)
             ->find($email);
+        return $result;
+    }
+
+    function isLoginCorrect($login, $password)
+    {
+        $result = $this->getDoctrine()
+            ->getRepository(UserEntity::class)
+            ->findOneBy([
+                'mail' => $login,
+                'mdp' => $password
+            ]);
         return $result;
     }
 }

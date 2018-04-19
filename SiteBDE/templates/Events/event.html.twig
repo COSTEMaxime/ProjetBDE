@@ -69,6 +69,7 @@
                                         </li>
 
                                     <li class="dropdown">
+                                        {% if app.session.get('userInfo').IDStatus == 2 %}
                                         <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Liste inscrit<b class="caret"></b></a>
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li class="">
@@ -78,6 +79,7 @@
                                                 <a href="{{ path('downloadEventCSV', {slug: slug}) }}"><i class="fa fa-lg fa-print"></i> Télécharger en PDF </a>
                                             </li>
                                         </ul>
+                                        {% endif %}
                                     </li>
 
                     </span>
@@ -130,8 +132,12 @@
                                 </div>
                             </div>
                             {% if app.session.get('logged') is not null %}
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                                {% if app.session.get('userInfo').IDStatus == 2 %}
+                                     <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
+                                {% endif %}
+                                {% if app.session.get('userInfo').IDStatus == 1 %}
+                                    <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                                {% endif %}
                             {% endif %}
                         </div>
                         {% if app.session.get('logged') is not null %}
@@ -151,9 +157,15 @@
                         Nombre de <i class="fa fa-lg fa-thumbs-o-up"></i> total :
                         {% if app.session.get('logged') is not null %}
                         <span class="print">
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
-                            <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                            {% if app.session.get('userInfo').IDStatus == 1 %}
+                                <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
+                            {% endif %}
+                            {% if app.session.get('userInfo').IDStatus == 2 %}
+                                <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>
+                            {% endif %}
+                            {% if app.session.get('userInfo').IDStatus == 1 %}
+                                <a href="#" class="btn btn-link"><i class="fa fa-lg fa-legal"></i> Signaler </a>
+                            {% endif %}
                         </span>
                         {% endif %}
                     </div>

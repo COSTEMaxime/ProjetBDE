@@ -54,6 +54,18 @@
                                 </div>
                                 <!-- Button-->
                             {{ form_end(form) }}
+                                    {% if  passwordsDoesNotMatch == true  %}
+                                    <b>Les mots de passes ne correspondent pas !</b>
+                                    <br/>
+                                    {% endif %}
+                                    {% if  passwordNotConform == true  %}
+                                    <b>Les mots de passes ne sont pas conformes ! : chiffre et une majuscule</b>
+                                    <br/>
+                                    {% endif %}
+                                    {% if  emailAlreadyTaken == true  %}
+                                    <b>L'email a déjà été pris !</b>
+                                    <br/>
+                                    {% endif %}
                         </div>
                     </div>
                 </div>
