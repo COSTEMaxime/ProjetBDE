@@ -8,7 +8,6 @@ use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
 use App\Form\AddEventForm;
 use App\PDFConverter;
-use App\QueryResultConverter;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +26,7 @@ class EventController extends Controller
 {
 
     /**
-     * @Route("/events/{slug}/toPDF", name="downloadEventPDF", methods={"POST"})
+     * @Route("/events/{slug}/toPDF", name="downloadEventPDF", methods={"GET"})
      */
     public function downloadPDF($slug)
     {
@@ -40,10 +40,12 @@ class EventController extends Controller
             echo $e->getMessage();
             echo $e->getTraceAsString();
         }
+
+        return new JsonResponse(null);
     }
 
     /**
-     * @Route("/events/{slug}/toCSV", name="downloadEventCSV", methods={"POST"})
+     * @Route("/events/{slug}/toCSV", name="downloadEventCSV", methods={"GET"})
      */
     public function downloadCSV($slug)
     {
@@ -59,7 +61,7 @@ class EventController extends Controller
             echo $e->getTraceAsString();
         }
 
-        return $this->file($slug.'csv');
+        return $this->file($slug.'.csv');
     }
 
     /**
