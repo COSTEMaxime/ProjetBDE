@@ -85,7 +85,7 @@ class ShopController extends Controller
                 array_push($category, $cat->getName());
             }
 
-            $maxPrice = is_null($data->getMaxPrice()) ? null : $data->getMaxPrice();
+            $maxPrice = is_null($data->getMaxPrice()) ? PHP_INT_MAX : $data->getMaxPrice();
             $research = is_null($data->getResearch()) ? null : $data->getResearch();
 
             $result = $this->getDoctrine()
