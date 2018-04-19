@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\CONSTANTS;
 use App\Entity\ActiviteEntity;
 use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
@@ -75,7 +76,7 @@ class IdeaController extends Controller
             /** @var File $file */
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             $file->move(
-                'Uploads/',
+                CONSTANTS::$UPLOADS_DIR,
                 $fileName
             );
 

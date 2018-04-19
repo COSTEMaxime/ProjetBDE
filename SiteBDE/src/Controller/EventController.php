@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\CONSTANTS;
 use App\CSVConverter;
 use App\Entity\InscritManifestationEntity;
 use App\Entity\ManifestationEntity;
@@ -22,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Validator\Constraints\DateTime;
+use \ZipArchive;
 
 class EventController extends Controller
 {
@@ -64,7 +65,7 @@ class EventController extends Controller
             /** @var File $file */
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
             $file->move(
-                'Uploads/',
+                CONSTANTS::$UPLOADS_DIR,
                 $fileName
             );
 
@@ -111,10 +112,12 @@ class EventController extends Controller
      */
     public function downloadPDF($slug)
     {
+        $fileName = CONSTANTS::$DOWNLOADS_DIR.preg_replace('/\s+/', '_', $slug).'.pdf';
+
         try {
             PDFConverter::generateFromData([
                 'data' => $this->getInscrits($slug),
-                'header' => $slug
+                'header' => $fileName
             ]);
         }
         catch (\Exception $e) {
@@ -130,10 +133,12 @@ class EventController extends Controller
      */
     public function downloadCSV($slug)
     {
+        $fileName = CONSTANTS::$DOWNLOADS_DIR.preg_replace('/\s+/', '_', $slug).'.csv';
+
         try {
             CSVConverter::generateFromData([
                 'data' => $this->getInscrits($slug),
-                'header' => $slug
+                'header' => $fileName
             ]);
         }
         catch (\Exception $e)
@@ -142,7 +147,51 @@ class EventController extends Controller
             echo $e->getTraceAsString();
         }
 
-        return $this->file($slug.'.csv');
+        return $this->file($fileName);
+    }
+
+    /**
+     * @Route("/events/{slug}/downloadImg", name="downloadImages", methods={"GET"})
+     */
+    public function downloadImages($slug)
+    {
+        $event = $this->getDoctrine()
+            ->getRepository(ManifestationEntity::class)
+            ->findOneBy(array('titre' => $slug));
+
+        $photosAComment = $this->getDoctrine()
+            ->getRepository(CommentEntity::class)
+            ->findBy(array('IdParent' => $event->getId()));
+
+        if(!$photosAComment)    {
+            return null;
+        }
+
+        $zip = new ZipArchive();
+        $fileName = CONSTANTS::$DOWNLOADS_DIR.preg_replace('/\s+/', '_', $slug).'.zip';
+
+        try {
+            if($zip->open($fileName, \ZipArchive::CREATE) !== true) {
+                throw new \Exception('Error : can\'t open the file :' . $fileName);
+            }
+        }
+        catch (\Exception $e)
+        {
+            echo $e->getMessage();
+            echo $e->getTraceAsString();
+        }
+
+        foreach ($photosAComment as $key) {
+            $photo = $this->getDoctrine()
+                ->getRepository(PhotoEntity::class)
+                ->findBy(array('id' => $key->getIdPhoto()));
+
+            $zip->addFile(CONSTANTS::$UPLOADS_DIR.$photo[0]->getPath());
+        }
+
+        $zip->close();
+
+        return $this->file($fileName);
     }
 
     /**
@@ -163,9 +212,9 @@ class EventController extends Controller
 
         $tabphotos = array();
         foreach ($photosAComment as $key) {
-        $photos = $this->getDoctrine()
-            ->getRepository(PhotoEntity::class)
-            ->findBy(array('id' => $key->getIdPhoto() ));
+            $photos = $this->getDoctrine()
+                ->getRepository(PhotoEntity::class)
+                ->findBy(array('id' => $key->getIdPhoto() ));
             array_push($tabphotos, $photos);
         }
 
@@ -227,8 +276,6 @@ class EventController extends Controller
 
             return $this->redirectToRoute('event', array('slug' => $slug));
         }
-
-
 
 
         /*
@@ -303,5 +350,4 @@ class EventController extends Controller
             ->getRepository(InscritManifestationEntity::class)
             ->findBy(array('IDManifestation' => $event->getId()));
     }
-
 }

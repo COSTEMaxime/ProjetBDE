@@ -14,7 +14,7 @@ class CSVConverter
     {
         if($data == null) {throw new \Exception("Error : no data received (passing a null pointer ?)");}
 
-        $fileName = $data['header'].'.csv';
+        $fileName = $data['header'];
         $file = fopen($fileName, 'w');
         $d = ',';
         $e = '"';
