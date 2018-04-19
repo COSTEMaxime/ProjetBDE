@@ -120,4 +120,17 @@ class ProduitEntity
 
         return $this;
     }
+
+    public function jsonSerialize()
+    {
+        return [
+            'id'            =>      $this->id,
+            'nom'           =>      $this->nom,
+            'description'   =>      $this->description,
+            'prix'          =>      $this->prix,
+            'type'          =>      $this->type,
+            'nbDeFois'      =>      $this->type,
+            'idPhoto'       =>      $this->idPhoto
+        ];
+    }
 }

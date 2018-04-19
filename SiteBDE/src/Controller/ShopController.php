@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
@@ -131,34 +132,80 @@ class ShopController extends Controller
      */
     public function new(Request $request)
     {
+        $produitEntity = new ProduitEntity();
+        $form = $this->createForm(ProduitEntity::class, $produitEntity);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($produitEntity);
+            $em->flush();
+
+            return $this->redirectToRoute('produit_entity_index');
+        }
+
+        return $this->render('produit_entity/new.html.twig', [
+            'produit_entity' => $produitEntity,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
      * @Route("/product/{id}", name="uniqueArticle", methods={"GET"})
      */
-    public function show(ProduitEntity $produitEntity)
+    public function show($id)
     {
+        $product = $this->getDoctrine()
+            ->getRepository(ProduitEntity::class)
+            ->findOneBy(['id' => $id]);
 
+        if($product) {
+            return new JsonResponse($product->jsonSerialize());
+        }
+        else    {
+            return new JsonResponse(['error' => 'ID not found']);
+        }
     }
 
     /**
-     * Route("/article/{id}/edit", name="editArticle", methods={"GET|POST"})
+     * Route("/product/{id}/edit", name="editArticle", methods={"GET|POST"})
      */
     public function edit(Request $request, ProduitEntity $produitEntity)
     {
+        $form = $this->createForm(ProduitEntity::class, $produitEntity);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('produit_entity_edit', ['id' => $produitEntity->getId()]);
+        }
+
+        return $this->render('produit_entity/edit.html.twig', [
+            'produit_entity' => $produitEntity,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
-     * @Route("/articles/{id}", name="deleteArticle", methods={"DELETE"})
+     * @Route("/product/{id}", name="deleteArticle", methods={"DELETE"})
      */
-    public function delete(Request $request, ProduitEntity $produitEntity)
+    public function delete($id)
     {
+        $product = $this->getDoctrine()
+            ->getRepository(ProduitEntity::class)
+            ->findOneBy(['id' => $id]);
 
+        $manager = $this->getDoctrine()
+            ->getManager();
+
+        $manager->remove($product);
+        $manager->flush();
+
+        return new JsonResponse(['message' => 'Deleted product :'.$id]);
     }
 
-    function generateChoices()
+    private function generateChoices()
     {
         $result = $this->getDoctrine()
             ->getRepository(TypeEntity::class)
