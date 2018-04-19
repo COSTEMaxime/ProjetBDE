@@ -126,30 +126,6 @@ class ShopController extends Controller
         ]);
     }
 
-
-    /**
-     * @Route("/product/new", name="newProduct", methods={"POST"})
-     */
-    public function new(Request $request)
-    {
-        $produitEntity = new ProduitEntity();
-        $form = $this->createForm(ProduitEntity::class, $produitEntity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($produitEntity);
-            $em->flush();
-
-            return $this->redirectToRoute('produit_entity_index');
-        }
-
-        return $this->render('produit_entity/new.html.twig', [
-            'produit_entity' => $produitEntity,
-            'form' => $form->createView(),
-        ]);
-    }
-
     /**
      * @Route("/product/{id}", name="uniqueArticle", methods={"GET"})
      */
@@ -168,7 +144,44 @@ class ShopController extends Controller
     }
 
     /**
-     * Route("/product/{id}/edit", name="editArticle", methods={"GET|POST"})
+     * @Route("/product/new", name="newProduct", methods={"POST"})
+     */
+    public function new(Request $request)
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if(isset($data['nom'])
+            && isset($data['description'])
+            && isset($data['prix'])
+            && isset($data['type'])
+            && isset($data['nb_de_fois'])
+            && isset($data['id_photo']))
+        {
+            $manager = $this->getDoctrine()->getManager();
+
+            $product = new ProduitEntity();
+            $product->setNom($data['nom']);
+            $product->setDescription($data['description']);
+            $product->setPrix($data['prix']);
+            $product->setType($data['type']);
+            $product->setNbDeFois($data['nb_de_fois']);
+            $product->setIdPhoto($data['id_photo']);
+
+            $manager->persist($product);
+            $manager->flush();
+
+            return new JsonResponse([
+                'message' => 'Added new product !',
+                'product' => $product->jsonSerialize()
+            ]);
+        }
+        else    {
+            return new JsonResponse(['error' => 'Missing argument']);
+        }
+    }
+
+    /**
+     * Route("/product/{id}/edit", name="editArticle", methods={"PUT"})
      */
     public function edit(Request $request, ProduitEntity $produitEntity)
     {
@@ -196,13 +209,21 @@ class ShopController extends Controller
             ->getRepository(ProduitEntity::class)
             ->findOneBy(['id' => $id]);
 
-        $manager = $this->getDoctrine()
-            ->getManager();
+        if($product)
+        {
+            $manager = $this->getDoctrine()
+                ->getManager();
 
-        $manager->remove($product);
-        $manager->flush();
+            $manager->remove($product);
+            $manager->flush();
 
-        return new JsonResponse(['message' => 'Deleted product :'.$id]);
+            return new JsonResponse(['message' => 'Deleted product :'.$id]);
+        }
+        else    {
+            return new JsonResponse(['error' => 'ID not found']);
+        }
+
+
     }
 
     private function generateChoices()
