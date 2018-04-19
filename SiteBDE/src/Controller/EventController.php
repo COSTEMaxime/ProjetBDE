@@ -146,13 +146,67 @@ class EventController extends Controller
     /**
      *  @Route("/events/{slug}", name="event")
      */
-    public function event($slug)
+    public function event($slug,Request $request)
     {
         $session = new Session();
 
         $event = $this->getDoctrine()
             ->getRepository(ManifestationEntity::class)
             ->findOneBy(array('titre' => $slug));
+
+        //Formulaire :
+        $task = new AddEventForm();
+        $form = $this->createFormBuilder($task)
+            ->add('image', FileType::class, array('label' => 'Image','attr'=> array('name'=>'img','onchange'=>"readURL(this)")))
+            ->add('description', TextareaType::class)
+            ->add('submit', SubmitType::class, array('label' => "Ajouter ma photo",'attr'=> array('class'=>'btn btn-primary')))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isSubmitted())
+        {
+            $data = $form->getData(); //Récupération donnée
+
+            //File gestion
+            $file = $data->getImage(); //Image
+            /** @var File $file */
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                'Uploads/',
+                $fileName
+            );
+
+            $manager = $this->getDoctrine()->getManager();
+            /* Ajout de la photo*/
+            $image = new PhotoEntity();
+            $image->setIsFlagged(false);
+            $image->setNblike(0);
+            $image->setPath($fileName);
+            $image->setIDuser(-1);
+            //TODO
+            //$image->setIDuser(getCurrentUserID());
+
+            $manager->persist($image);
+            $manager->flush();
+
+            /*Ajout du commentaire*/
+            $commentary = new CommentEntity();
+            $commentary->setDateComment();
+            //$commentary->setIDuser();
+            $commentary->setIsFlagged(false);
+            $commentary->setIdLike();
+            $commentary->setIdParent();
+            $commentary->setIdPhoto();
+
+            $manager->persist($commentary); //Envoyer data
+            $manager->flush();
+
+            return $this->redirectToRoute('events');
+        }
+
+
+
 
         /*
         //Get comments where parent is idea
@@ -179,6 +233,7 @@ class EventController extends Controller
     }*/
 
         return $this->render('Events/event.html.twig', [
+            'form' => $form->createView(),
             'event' => $event,
             'slug' => $slug
         ]);

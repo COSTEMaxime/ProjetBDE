@@ -19,6 +19,7 @@
     {% endblock %}
 {% block body %}
 {{ dump(event) }}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
     <div class="row" id="lightblue">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-info coupon"> <!-- Panel est deprecated, il faudrait peut-être le mettre à jour Emilien ;) -->
@@ -60,22 +61,8 @@
                                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
                                             <li>
                                                 <div class="col-md-20">
-                                                    <b>Ajoutez une photo : </b>
-                                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8"
-                                                          id="login-nav">
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <input type='file' onchange="readURL(this);" name = "img"/>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                             <label for="exampleFormControlTextarea1">Description</label>
-                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="btn btn-primary btn-block">Ajouter Photo</button>
-                                                        </div>
-                                                    </form>
+                                                    {{ form_start(form) }} <!--MyForm -->
+                                                    {{ form_end(form) }}
                                                 </div>
                                             </li>
                                         </ul>
