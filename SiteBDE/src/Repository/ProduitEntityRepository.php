@@ -22,7 +22,7 @@ class ProduitEntityRepository extends ServiceEntityRepository
     public function findAllWithCriteria($category, $maxPrice, $research)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.type = :category')
+            ->andWhere('p.type IN (:category)')
             ->andWhere('p.prix <= :maxPrice')
             ->andWhere('p.nom LIKE :research OR p.description = :research')
             ->setParameters([
