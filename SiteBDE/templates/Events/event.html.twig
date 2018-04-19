@@ -18,7 +18,7 @@
     </ul>
     {% endblock %}
 {% block body %}
-{{ dump(event) }}
+
     {% form_theme form 'bootstrap_4_layout.html.twig' %} <!-- Utiliser bootstrap -->
     <div class="row" id="lightblue">
         <div class="col-md-6 col-md-offset-3">
@@ -93,23 +93,25 @@
             </div>
         </div>
     </div>
-
-
-        <div class="row" id="yellow">
+        {% set compteur = 0 %}
+        {% for comments in photosAComment %}
+        <!-- Espace commentaire -->
+    <div class="row" id="yellow">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-warning coupon">
                     <div class="panel-heading" id="head">
                         <div class="panel-title" id="title">
                             <i class="fa fa-comments-o fa-2x"></i>
-                        <span class="hidden-xs">John - McGuard - 17/05/2018</span>
+                            {% set date = comments.dateComment.date|split(' ') %}
+                        <span class="hidden-xs">John - McGuard - {{ date[0] }}</span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <img src="https://i1.wp.com/www.alwaysforkeyboard.com/wp-content/uploads/2017/02/counter_strike_go_7.jpg?fit=1920%2C1080&ssl=1" class="coupon-img img-rounded" >
+                    <img src="../Uploads/{{ photo[compteur][0].path }}" class="coupon-img img-rounded" alt="image" >
                     <div class="col-md-9">
                     </div>
                     <div class="col-md-12">
-                        <p3>Hey dudes, look at this ! Nice teamwork ;)</p3>
+                        <p3>{{ comments.comment }}</p3>
                     </div>
                     <div class="comments">
                         <b>John Lenon : </b>
@@ -161,4 +163,6 @@
             </div>
         </div>
     </div>
+{% set compteur = compteur + 1 %}
+{% endfor %}
 {% endblock %}

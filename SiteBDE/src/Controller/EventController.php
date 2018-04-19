@@ -7,6 +7,7 @@ use App\Entity\InscritManifestationEntity;
 use App\Entity\ManifestationEntity;
 use App\Entity\PhotoEntity;
 use App\Form\AddEventForm;
+use App\Entity\CommentEntity;
 use App\PDFConverter;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -21,6 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class EventController extends Controller
 {
@@ -154,6 +156,19 @@ class EventController extends Controller
             ->getRepository(ManifestationEntity::class)
             ->findOneBy(array('titre' => $slug));
 
+
+        $photosAComment = $this->getDoctrine()
+            ->getRepository(CommentEntity::class)
+            ->findBy(array('IdParent' => $event->getId() ));
+
+        $tabphotos = array();
+        foreach ($photosAComment as $key) {
+        $photos = $this->getDoctrine()
+            ->getRepository(PhotoEntity::class)
+            ->findBy(array('id' => $key->getIdPhoto() ));
+            array_push($tabphotos, $photos);
+        }
+
         //Formulaire :
         $task = new AddEventForm();
         $form = $this->createFormBuilder($task)
@@ -164,6 +179,7 @@ class EventController extends Controller
 
         $form->handleRequest($request);
 
+        //Submit - Ajout d'une photo avec son commentaire
         if($form->isSubmitted() && $form->isSubmitted())
         {
             $data = $form->getData(); //Récupération donnée
@@ -192,17 +208,24 @@ class EventController extends Controller
 
             /*Ajout du commentaire*/
             $commentary = new CommentEntity();
-            $commentary->setDateComment();
-            //$commentary->setIDuser();
+
+            $commentary->setComment($form["description"]->getData());
+            $time = new \DateTime();
+
+            $time->format('H:i:s \O\n Y-m-d');
+            $commentary->setDateComment($time);//Date du jour à mettre
+
             $commentary->setIsFlagged(false);
-            $commentary->setIdLike();
-            $commentary->setIdParent();
-            $commentary->setIdPhoto();
+            $commentary->setIdLike(-1);
+
+
+            $commentary->setIdParent($event->getId()); //id de l'event dans lequel on est
+            $commentary->setIdPhoto($image->getId());
 
             $manager->persist($commentary); //Envoyer data
             $manager->flush();
 
-            return $this->redirectToRoute('events');
+            return $this->redirectToRoute('event', array('slug' => $slug));
         }
 
 
@@ -235,7 +258,9 @@ class EventController extends Controller
         return $this->render('Events/event.html.twig', [
             'form' => $form->createView(),
             'event' => $event,
-            'slug' => $slug
+            'slug' => $slug,
+            'photosAComment' => $photosAComment,
+            'photo' => $tabphotos
         ]);
     }
 
