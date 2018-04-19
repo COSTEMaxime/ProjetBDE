@@ -91,9 +91,20 @@ class ShopController extends Controller
                 ->getRepository(ProduitEntity::class)
                 ->findAllWithCriteria($category, $maxPrice, $research);
 
+            /* Récupérer la photo avec les données*/
+            $data = array();
+            foreach ($result as $idea) {
+                /** @var ActiviteEntity $idea */
+                $result = $this->getDoctrine()
+                    ->getRepository(PhotoEntity::class)
+                    ->findOneBy(['id' => $idea->getIDphoto()]); //On récupère l'IDPhoto
+                array_push($data, [$idea, 'pathPhoto' => $result->getPath()]);
+            }
+            //////////////////////////////
+
             return $this->render('Shop/search.html.twig', [
                 'form' => $form->createView(),
-                'result' => $result
+                'donnees' => $data
             ]);
         }
 

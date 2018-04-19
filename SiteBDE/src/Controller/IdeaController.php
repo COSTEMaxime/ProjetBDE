@@ -128,7 +128,7 @@ class IdeaController extends Controller
 
         //Image
         $result2 = $this->getDoctrine()
-            ->getRepository(PhotoEntity::class);
+        ->getRepository(PhotoEntity::class);
         $img = $result2->find($req[0]->getIDphoto());
         //$img = $result->findBy(array('path' => $slug));
 
