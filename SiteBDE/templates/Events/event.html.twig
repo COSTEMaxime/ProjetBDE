@@ -158,7 +158,7 @@
                         {% if app.session.get('logged') is not null %}
                         <span class="print">
                             {% if app.session.get('userInfo').IDStatus == 1 %}
-                                <a href="#" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
+                                <a href="{{ path('downloadImages', {slug: slug}) }}" class="btn btn-link"><i class="fa fa-lg fa-cloud-download"></i> Télécharger photo </a>
                             {% endif %}
                             {% if app.session.get('userInfo').IDStatus == 2 %}
                                 <a href="#" class="btn btn-link"><i class="fa fa-lg fa-ban"></i> Supprimer </a>

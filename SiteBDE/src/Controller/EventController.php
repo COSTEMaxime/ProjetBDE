@@ -151,6 +151,28 @@ class EventController extends Controller
     }
 
     /**
+     * @Route("/events/{slug}/inscription", name="event_inscription", methods={"GET"})
+     */
+    public function inscription($slug)
+    {
+        $fileName = CONSTANTS::$DOWNLOADS_DIR.preg_replace('/\s+/', '_', $slug).'.csv';
+
+        try {
+            CSVConverter::generateFromData([
+                'data' => $this->getInscrits($slug),
+                'header' => $fileName
+            ]);
+        }
+        catch (\Exception $e)
+        {
+            echo $e->getMessage();
+            echo $e->getTraceAsString();
+        }
+
+        return $this->file($fileName);
+    }
+
+    /**
      * @Route("/events/{slug}/downloadImg", name="downloadImages", methods={"GET"})
      */
     public function downloadImages($slug)
