@@ -39,7 +39,7 @@
             <button type="button" class="btn btn-danger" onclick="window.location.href='{{ path('dislikeIdea') }}'">
                 <span class="glyphicon glyphicon-thumbs-down"></span>
             </button>
-            <button type="button" class="btn btn-warning" onclick="window.location.href='{{ path('transformIdea') }}'">Transformer</button>
+            <button type="button" class="btn btn-warning" onclick="window.location.href='/ideas/transform/{{ data.0.titre }}'">Transformer</button>
             {% endif %}
             <img src="Images/like.png" alt="pouce bleu" height="30" width="30"><b>{{ nblike }}</b>
     </figure>
