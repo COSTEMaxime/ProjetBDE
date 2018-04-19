@@ -24,11 +24,11 @@ class ProduitEntityRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.type = :category')
             ->andWhere('p.prix <= :maxPrice')
-            ->andWhere('p.nom = :category OR p.description = :research')
+            ->andWhere('p.nom LIKE :research OR p.description = :research')
             ->setParameters([
                 'category' => $category,
                 'maxPrice' => $maxPrice,
-                'research' => $research
+                'research' => '%'.$research.'%'
             ])
             ->orderBy('p.prix', 'ASC')
             ->getQuery()
