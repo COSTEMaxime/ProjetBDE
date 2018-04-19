@@ -146,7 +146,7 @@ class ShopController extends Controller
     /**
      * @Route("/product/new", name="newProduct", methods={"POST"})
      */
-    public function new(Request $request)
+    public function new()
     {
         $data = json_decode(file_get_contents('php://input'), true);
 
@@ -181,23 +181,33 @@ class ShopController extends Controller
     }
 
     /**
-     * Route("/product/{id}/edit", name="editArticle", methods={"PUT"})
+     * @Route("/product/{id}/edit", name="editArticle", methods={"PUT"})
      */
-    public function edit(Request $request, ProduitEntity $produitEntity)
+    public function edit($id)
     {
-        $form = $this->createForm(ProduitEntity::class, $produitEntity);
-        $form->handleRequest($request);
+        $manager = $this->getDoctrine()->getManager();
+        $product = $manager->getRepository(ProduitEntity::class)
+            ->findOneBy(['id' => $id]);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if($product)
+        {
+            $data = json_decode(file_get_contents('php://input'), true);
 
-            return $this->redirectToRoute('produit_entity_edit', ['id' => $produitEntity->getId()]);
+            if(isset($data['nom']))             {$product->setNom($data['nom']);}
+            if(isset($data['description']))     {$product->setDescription($data['description']);}
+            if(isset($data['prix']))            {$product->setPrix($data['prix']);}
+            if(isset($data['type']))            {$product->setType($data['type']);}
+            if(isset($data['nb_de_fois']))      {$product->setNbDeFois($data['nb_de_fois']);}
+            if(isset($data['id_photo']))        {$product->setIdPhoto($data['id_photo']);}
+
+            $manager->flush();
+
+            return new JsonResponse(['message' => 'Modified product : '.$id]);
+        }
+        else    {
+            return new JsonResponse(['error' => 'ID not found']);
         }
 
-        return $this->render('produit_entity/edit.html.twig', [
-            'produit_entity' => $produitEntity,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -211,19 +221,16 @@ class ShopController extends Controller
 
         if($product)
         {
-            $manager = $this->getDoctrine()
-                ->getManager();
+            $manager = $this->getDoctrine()->getManager();
 
             $manager->remove($product);
             $manager->flush();
 
-            return new JsonResponse(['message' => 'Deleted product :'.$id]);
+            return new JsonResponse(['message' => 'Deleted product : '.$id]);
         }
         else    {
             return new JsonResponse(['error' => 'ID not found']);
         }
-
-
     }
 
     private function generateChoices()
