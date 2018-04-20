@@ -10,7 +10,7 @@
             <a href="/ideas">Boîte à idée</a>
         </li>
         <li class="active">
-            <a href="/events">Evènements</a>
+            <a href="/events">événements</a>
         </li>
         <li class="">
             <a href="/shop">Boutique</a>
@@ -20,7 +20,7 @@
 {% block body %}
     {% if app.session.get('logged') is not null %}
         {% if app.session.get('userInfo').IDStatus == 2 %}
-            <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un évènement</button>
+            <button type="button" class="btn btn-warning top-corner" onclick="window.location.href='/events/add'">Créer un événement</button>
         {% endif %}
     {% endif %}
 {% for data in events%}

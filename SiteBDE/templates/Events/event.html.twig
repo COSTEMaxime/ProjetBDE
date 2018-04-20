@@ -10,7 +10,7 @@
             <a href="/ideas">Boîte à idée</a>
         </li>
         <li class="active">
-            <a href="/events">Evènements</a>
+            <a href="/events">événements</a>
         </li>
         <li class="">
             <a href="/shop">Boutique</a>
@@ -32,7 +32,7 @@
                     <img src="/Uploads/{{ event.image }}" class="coupon-img img-rounded">
                     <div class="col-md-9">
                         <ul class="items">
-                            <li><b>Description de l'évènement :</b></li>
+                            <li><b>Description de l'événement :</b></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
@@ -51,7 +51,7 @@
                         {% if app.session.get('logged') is not null %}
                         N'attendez plus :
                         {% else %}
-                        Vous devez être inscrit pour intéragir avec les évènements
+                        Vous devez être inscrit pour intéragir avec les événements
                         {% endif %}
                         <span class="print">
                             {% if app.session.get('logged') is not null %}
@@ -87,7 +87,7 @@
                         {% if inscription == 0 %}
                         <a href="{{ path('event_inscription', {slug: slug}) }}"> Je m'inscris </a>
                         {% else %}
-                            Vous êtes incrit à l'évènement !
+                            Vous êtes incrit à l'événement !
                         {% endif %}
                     </div>
                     {% endif %}

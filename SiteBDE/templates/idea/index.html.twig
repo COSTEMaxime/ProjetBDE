@@ -20,7 +20,7 @@
 
 {% block body %}
 {% if app.session.get('logged') is not null %}
-    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer un évènement</button>
+    <button type="button" class="btn btn-primary top-corner" onclick="window.location.href='{{ path('addIdea') }}'">Proposer une idée</button>
 {% endif %}
 {% for data in ideas%}
     <figure class="snip1423">

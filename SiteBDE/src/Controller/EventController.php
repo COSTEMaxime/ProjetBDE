@@ -76,9 +76,7 @@ class EventController extends Controller
             $image->setIsFlagged(false);
             $image->setNblike(0);
             $image->setPath($fileName);
-            $image->setIDuser(-1);
-            //TODO
-            //$image->setIDuser(getCurrentUserID());
+            $image->setIDuser($session->get('userInfo')->getId());
 
             $manager->persist($image);
             $manager->flush();
@@ -93,9 +91,7 @@ class EventController extends Controller
             $idea->setTypeRecurrence($data->getRecurrence());
             $idea->setPrix($data->getPrice());
             $idea->setIsFlagged(false);
-            $idea->setIDuser(-1);
-            //TODO
-            //$idea->setIDuser(getCurrentUser());
+            $idea->setIDuser($session->get('userInfo')->getId());
 
             $manager->persist($idea);
             $manager->flush();
@@ -278,9 +274,7 @@ class EventController extends Controller
             $image->setIsFlagged(false);
             $image->setNblike(0);
             $image->setPath($fileName);
-            $image->setIDuser(-1);
-            //TODO
-            //$image->setIDuser(getCurrentUserID());
+            $image->setIDuser($session->get('userInfo')->getId());
 
             $manager->persist($image);
             $manager->flush();
@@ -306,32 +300,6 @@ class EventController extends Controller
 
             return $this->redirectToRoute('event', array('slug' => $slug));
         }
-
-
-        /*
-        //Get comments where parent is idea
-        $comments = $this->getDoctrine()
-            ->getRepository(CommentEntity::class)
-            ->findBy(['id' => $ideasId]);
-
-        //Get the number of like per comment
-        $commentsLikes = array();
-        foreach ($comments as $comment) {
-            /** @var CommentEntity $comment */
-        /**array_push($commentsLikes, [
-        $comment->getId() => $this->getDoctrine()
-        ->getRepository(CommentLikeEntity::class)
-        ->getNbLikes($comment->getId())
-        ]);
-        }
-
-        //Get ideas' id
-        $ideasId = array();
-        foreach ($ideas as $idea) {
-        /** @var ActiviteEntity $idea */
-        /*array_push($ideasId, $idea->getId());
-    }*/
-
 
         //Pour empêcher de se réinscrire
         if (isset($inscription)) {

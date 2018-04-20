@@ -55,7 +55,7 @@
                     <li class="active">
                         <a href="/" >Accueil</a>
                     </li>
-                    {%  if app.session.get('logged') is not defined %}
+                    {% if app.session.get('logged') is not null %}
                         <li class="">
                             <a href="/ideas">Boîte à idée</a>
                         </li>
