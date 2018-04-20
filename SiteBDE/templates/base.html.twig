@@ -55,15 +55,17 @@
                     <li class="active">
                         <a href="/" >Accueil</a>
                     </li>
-                    <li class="">
-                        <a href="/ideas">Boîte à idée</a>
-                    </li>
-                    <li class="">
-                        <a href="/events">Evènements</a>
-                    </li>
-                    <li class="">
-                        <a href="/shop">Boutique</a>
-                    </li>
+                    {%  if app.session.get('logged') is not defined %}
+                        <li class="">
+                            <a href="/ideas">Boîte à idée</a>
+                        </li>
+                        <li class="">
+                            <a href="/events">Evènements</a>
+                        </li>
+                        <li class="">
+                            <a href="/shop">Boutique</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 {% endblock %}
                 {% if app.session.get('logged') is not null %}
