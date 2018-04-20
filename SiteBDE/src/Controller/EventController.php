@@ -228,8 +228,7 @@ class EventController extends Controller
 
         $inscription = $this->getDoctrine() //Pour liste inscription
             ->getRepository(InscritManifestationEntity::class)
-            ->findOneBy(array('IDManifestation' => $event->getId()));
-
+            ->findBy(array('IDManifestation' => $event->getId()));
 
 
         $photosAComment = $this->getDoctrine()
@@ -301,13 +300,21 @@ class EventController extends Controller
             return $this->redirectToRoute('event', array('slug' => $slug));
         }
 
+        $isInscrit = 0;
+
         //Pour empêcher de se réinscrire
         if (isset($inscription)) {
-            if ($inscription->getIDUser() == $session->get('userInfo')->getId()) {
-                $inscription = 1; //déjà inscrit
+
+            $var = $this->getDoctrine()
+                ->getRepository(InscritManifestationEntity::class)
+                ->findBy([
+                    'IDuser' => $session->get('userInfo')->getId(),
+                    'IDManifestation' => $event->getId()
+                ]);
+
+            if ($var) {
+                $isInscrit = 1;
             }
-        }else{
-            $inscription = 0;
         }
 
         return $this->render('Events/event.html.twig', [
@@ -316,7 +323,7 @@ class EventController extends Controller
             'slug' => $slug,
             'photosAComment' => $photosAComment,
             'photo' => $tabphotos,
-            'inscription' => $inscription
+            'inscription' => $isInscrit
         ]);
     }
 
