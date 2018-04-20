@@ -19,7 +19,7 @@ class RegisterController extends Controller
      */
     public function index(Request $request)
     {
-        $session = new Session();
+        $session = $request->getSession();
         $session->set('logged', null);
         $session->set('userInfo', null);
         $passwordsDoesNotMatch = 0;
@@ -35,7 +35,6 @@ class RegisterController extends Controller
             ->add('passwordConfirm', PasswordType::class)
             ->add('Connect', SubmitType::class, array('label' => "S'enregistrer",'attr'=> array('class'=>'btn btn-primary')))
             ->getForm();
-
 
         $form->handleRequest($request);
 

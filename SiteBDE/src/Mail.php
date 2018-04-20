@@ -4,6 +4,7 @@ namespace App;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+
 class Mail
 {
     private $mail;
