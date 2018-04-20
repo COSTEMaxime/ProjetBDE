@@ -29,12 +29,16 @@
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/psr/link" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/sensio/framework-extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/setasign/fpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/setasign/fpdi" />
+      <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/setasign/fpdi-fpdf" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/symfony/asset" />
       <excludeFolder url="file://$MODULE_DIR$/SiteBDE/vendor/symfony/browser-kit" />

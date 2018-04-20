@@ -92,6 +92,10 @@
       <path value="$PROJECT_DIR$/SiteBDE/vendor/symfony/serializer" />
       <path value="$PROJECT_DIR$/SiteBDE/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/SiteBDE/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/SiteBDE/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/SiteBDE/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/SiteBDE/vendor/setasign/fpdf" />
+      <path value="$PROJECT_DIR$/SiteBDE/vendor/setasign/fpdi-fpdf" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
